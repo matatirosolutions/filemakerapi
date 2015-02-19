@@ -1,0 +1,19 @@
+{
+    "name": "filemaker/api",
+    "type": "library",
+    "description": "FileMaker PHP API",
+    "authors": [
+        {
+            "name": "FileMaker Inc",
+            "email": "filemaker@filemaker.com",
+            "homepage": "filemaker.com"
+        }
+    ],
+    "license" : "proprietary",
+    "require": {
+    	"php": ">=5.3.0"
+    },
+    "autoload": {
+        "classmap": ["FileMaker.php"]
+    }
+}
