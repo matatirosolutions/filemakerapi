@@ -2,6 +2,7 @@
     "name": "matatirosoln/filemaker-api",
     "type": "library",
     "description": "FileMaker PHP API",
+    "keywords": ["FileMaker", "PHP API", "CWP"],
     "authors": [
         {
             "name": "FileMaker Inc",
