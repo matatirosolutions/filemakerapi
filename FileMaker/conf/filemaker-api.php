@@ -23,10 +23,10 @@ $__FM_CONFIG['locale'] = 'en';
 $__FM_CONFIG['logLevel'] = FILEMAKER_LOG_ERR;
 
 /**
- * The default hostspec (http://localhost:80, for example). DO NOT
- * include /fmi/xml in this string.
+ * The default hostspec (http://127.0.0.1:80, for example). Avoid using http://localhost:80/
+ * as it can cause peformance loss. DO NOT include /fmi/xml in this string.
  */
-$__FM_CONFIG['hostspec'] = 'http://localhost';
+$__FM_CONFIG['hostspec'] = 'http://127.0.0.1';
 
 /**
  * Specify any additional curl options - SSL certificates, etc. - in

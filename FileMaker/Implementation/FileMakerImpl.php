@@ -332,7 +332,7 @@ curl_setopt($Vd88fc6ed, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($Vd88fc6ed, CURLOPT_FAILONERROR, true); 
 	
  if ($this->getProperty('username')) { 
- $V313225f0 = base64_encode($this->getProperty('username'). ':' . $this->getProperty('password'));
+ $V313225f0 = base64_encode(utf8_decode($this->getProperty('username')). ':' . utf8_decode($this->getProperty('password')));
 $V44914468 = 'X-FMI-PE-Authorization: Basic ' . $V313225f0;
 curl_setopt($Vd88fc6ed, CURLOPT_HTTPHEADER, array('X-FMI-PE-ExtendedPrivilege: tU+xR2RSsdk=', $V44914468));
 }else{
