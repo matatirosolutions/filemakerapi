@@ -4,10 +4,10 @@
  *
  * @package FileMaker
  *
- * Copyright � 2005-2006, FileMaker, Inc.� All rights reserved.
- * NOTE:� Use of this source code is subject to the terms of the FileMaker
- * Software License which accompanies the code.� Your use of this source code
- * signifies your agreement to such license terms and conditions.� Except as
+ * Copyright © 2005-2009, FileMaker, Inc. All rights reserved.
+ * NOTE: Use of this source code is subject to the terms of the FileMaker
+ * Software License which accompanies the code. Your use of this source code
+ * signifies your agreement to such license terms and conditions. Except as
  * expressly granted in the Software License, no other copyright, patent, or
  * other intellectual property license or right is granted, either expressly or
  * by implication, by FileMaker.
@@ -35,6 +35,7 @@ $__FM_ERRORS = array(
     17 => '外国語の文字セットの UTF-16 への変換に失敗しました',
     18 => '続行するには、クライアントはアカウント情報を指定する必要があります',
     19 => '文字列に A から Z、a から z、0 から 9（ASCII）以外の文字が含まれています',
+    20 => 'コマンドまたは操作がスクリプトトリガによってキャンセルされました',
     100 => 'ファイルが見つかりません',
     101 => 'レコードが見つかりません',
     102 => 'フィールドが見つかりません',
@@ -129,7 +130,7 @@ $__FM_ERRORS = array(
     726 => 'インポートファイルのレコードの方がインポート先のテーブルのレコードよりも多くなっています。一部のレコードはインポートされません',
     727 => 'インポート先のテーブルのレコードの方がインポートファイルのレコードよりも多くなっています。一部のレコードは更新されません',
     729 => 'インポート中にエラーが発生しました。レコードをインポートすることができません',
-    730 => 'サポートされていない Excel のバージョンです。ファイルを Excel 7.0（Excel 95）、Excel 97、2000、または XP のフォーマットに変換して、もう一度実行してください',
+    730 => 'サポートされていない Excel バージョンです。ファイルを Excel 7.0 (Excel 95)、97、2000、XP または 2007 に変換してから再試行してください',
     731 => 'インポート元のファイルにデータが含まれていません',
     732 => 'このファイルには内部に他のファイルが含まれているため、挿入できません',
     733 => 'テーブルをテーブル自体にインポートすることはできません',
@@ -207,4 +208,13 @@ $__FM_ERRORS = array(
     1406 => 'SQL API のチェックに失敗しました（ODBC）',
     1407 => 'ステートメントの割り当てに失敗しました（ODBC）',
     1408 => '拡張エラー（ODBC）',
+    1450 => 'PHP アクセス権を拡張する操作が必要です',
+	1451 => '現在のファイルをリモートにする操作が必要です',
+	1501 => 'SMTP の認証に失敗しました',
+	1502 => 'SMTP サーバーによって接続が拒否されました',
+	1503 => 'SSL でエラーが発生しました',
+	1504 => 'SMTP サーバーの接続を暗号化する必要があります',
+	1505 => '指定された認証方法は SMTP サーバーではサポートされていません',
+	1506 => 'E メールは正常に送信されませんでした',
+	1507 => 'SMTP サーバーにログインできませんでした'
 );

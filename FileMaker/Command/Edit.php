@@ -4,7 +4,7 @@
  *
  * @package FileMaker
  *
- * Copyright � 2005-2006, FileMaker, Inc.� All rights reserved.
+ * Copyright © 2005-2009, FileMaker, Inc.� All rights reserved.
  * NOTE:� Use of this source code is subject to the terms of the FileMaker
  * Software License which accompanies the code.� Your use of this source code
  * signifies your agreement to such license terms and conditions.� Except as
@@ -40,7 +40,7 @@ class FileMaker_Command_Edit extends FileMaker_Command
      * @ignore
      * @param FileMaker_Implementation $fm The FileMaker_Implementation object the command was created by.
      * @param string $layout The layout the record is part of.
-     * @param integer $recordId The id of the record to edit.
+     * @param string $recordId The id of the record to edit.
      * @param array $values A hash of fieldname => value pairs. Repetions can be set
      * by making the value for a field a numerically indexed array, with the numeric keys
      * corresponding to the repetition number to set.

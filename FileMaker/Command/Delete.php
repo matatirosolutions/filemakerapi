@@ -4,7 +4,7 @@
  *
  * @package FileMaker
  *
- * Copyright � 2005-2006, FileMaker, Inc.� All rights reserved.
+ * Copyright © 2005-2009, FileMaker, Inc.� All rights reserved.
  * NOTE:� Use of this source code is subject to the terms of the FileMaker
  * Software License which accompanies the code.� Your use of this source code
  * signifies your agreement to such license terms and conditions.� Except as
@@ -40,7 +40,7 @@ class FileMaker_Command_Delete extends FileMaker_Command
      * @ignore
      * @param FileMaker_Implementation $fm The FileMaker_Implementation object the command was created by.
      * @param string $layout The layout to delete from.
-     * @param integer $recordId The id of the record to delete.
+     * @param string $recordId The id of the record to delete.
      */
     function FileMaker_Command_Delete($fm, $layout, $recordId)
     {

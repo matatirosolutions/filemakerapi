@@ -4,7 +4,7 @@
  *
  * @package FileMaker
  *
- * Copyright � 2005-2006, FileMaker, Inc.� All rights reserved.
+ * Copyright © 2005-2009, FileMaker, Inc.� All rights reserved.
  * NOTE:� Use of this source code is subject to the terms of the FileMaker
  * Software License which accompanies the code.� Your use of this source code
  * signifies your agreement to such license terms and conditions.� Except as
@@ -40,7 +40,7 @@ class FileMaker_Command_Duplicate extends FileMaker_Command
      * @ignore
      * @param FileMaker_Implementation $fm The FileMaker_Implementation object the command was created by.
      * @param string $layout The layout the record to duplicate is in.
-     * @param integer $recordId The id of the record to duplicate.
+     * @param string $recordId The id of the record to duplicate.
      */
     function FileMaker_Command_Duplicate($fm, $layout, $recordId)
     {

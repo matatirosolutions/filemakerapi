@@ -4,7 +4,7 @@
  *
  * @package FileMaker
  *
- * Copyright � 2005-2006, FileMaker, Inc.� All rights reserved.
+ * Copyright © 2005-2009, FileMaker, Inc.� All rights reserved.
  * NOTE:� Use of this source code is subject to the terms of the FileMaker
  * Software License which accompanies the code.� Your use of this source code
  * signifies your agreement to such license terms and conditions.� Except as
@@ -132,7 +132,7 @@ class FileMaker_Command
      * possible to find a single record by specifying its record
      * id. This method will be ignored by Add and FindAny commands.
      *
-     * @param integer $recordId The record id.
+     * @param string $recordId The record id.
      */
     function setRecordId($recordId)
     {

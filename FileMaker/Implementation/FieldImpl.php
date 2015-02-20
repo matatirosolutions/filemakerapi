@@ -245,19 +245,19 @@ if ($Vcaf85b7b) {
 } else {
  $V52124c01 = 24;
 } 
- ereg('([0-9]{1,2})[:]([0-9]{1,2})([:][0-9]{1,2})?', $V2063c160, $V9c28d32d);
+ ereg('([0-9]{1,2})[:]([0-9]{1,2})[:]?([0-9]{1,2})?', $V2063c160, $V9c28d32d);
 $V896c55cc = $V9c28d32d[1];
 $V640fd0cc = $V9c28d32d[2];
-if (count($V9c28d32d) > 4) {
+if (count($V9c28d32d) >= 4) {
  $V783e8e29 = $V9c28d32d[3];
 } 
- if ($V896c55cc < 1 || $V896c55cc > $V52124c01) {
+ if ($V896c55cc < 0 || $V896c55cc > $V52124c01) {
  $Vcb5e100e->addError($this, $V981c1e7b, $V2063c160);
-} else if ($V640fd0cc < 1 || $V640fd0cc > 59) {
+} else if ($V640fd0cc < 0 || $V640fd0cc > 59) {
  $Vcb5e100e->addError($this, $V981c1e7b, $V2063c160);
 } else
- if (count($V9c28d32d) > 4) {
- if ($V783e8e29 < 1 || $V783e8e29 > 59)
+ if (isset($V783e8e29)) {
+ if ($V783e8e29 < 0 || $V783e8e29 > 59)
  $Vcb5e100e->addError($this, $V981c1e7b, $V2063c160);
 }
 }

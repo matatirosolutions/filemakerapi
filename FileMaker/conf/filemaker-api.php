@@ -7,9 +7,9 @@
  */
 
 /**
- * The default character encoding ('utf-8' or 'iso-8859-1', case matters).
+ * The default character encoding ('UTF-8' or 'ISO-8859-1', case matters).
  */
-$__FM_CONFIG['charset'] = 'utf-8';
+$__FM_CONFIG['charset'] = 'UTF-8';
 
 /**
  * The default locale for providing string translations of error

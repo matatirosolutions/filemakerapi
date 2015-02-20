@@ -1,27 +1,28 @@
 <?php
 /**
- * FileMaker PHP API.
+ * FileMaker API for PHP
  *
  * @package FileMaker
  *
- * Copyright © 2005-2006, FileMaker, Inc.Ê All rights reserved.
- * NOTE:Ê Use of this source code is subject to the terms of the FileMaker
- * Software License which accompanies the code.Ê Your use of this source code
- * signifies your agreement to such license terms and conditions.Ê Except as
+ * Copyright © 2005-2009, FileMaker, Inc. All rights reserved.
+ * NOTE: Use of this source code is subject to the terms of the FileMaker
+ * Software License which accompanies the code. Your use of this source code
+ * signifies your agreement to such license terms and conditions. Except as
  * expressly granted in the Software License, no other copyright, patent, or
  * other intellectual property license or right is granted, either expressly or
  * by implication, by FileMaker.
  */
 
-/**
- * Load delegate and field classes.
+/**#@+
+ * @ignore Load delegate and field classes.
  */
 require_once dirname(__FILE__) . '/Implementation/LayoutImpl.php';
 require_once dirname(__FILE__) . '/Field.php';
+/**#@-*/
 
 /**
  * Layout description class. Contains all the information about a
- * specific layout. Can be requested directly, or returned as part of
+ * specific layout. Can be requested directly or returned as part of
  * a result set.
  *
  * @package FileMaker
@@ -38,9 +39,10 @@ class FileMaker_Layout
     var $_impl;
 
     /**
-     * Layout constructor.
+     * Layout object constructor.
      *
-     * @param FileMaker_Implementation &$fm The FileMaker_Implementation object this layout was created through.
+     * @param FileMaker_Implementation &$fm FileMaker_Implementation object 
+     *        that this layout was created through.
      */
     function FileMaker_Layout(&$fm)
     {
@@ -48,7 +50,7 @@ class FileMaker_Layout
     }
 
     /**
-     * Returns the name of the layout this object describes.
+     * Returns the name of this layout.
      *
      * @return string Layout name.
      */
@@ -58,7 +60,7 @@ class FileMaker_Layout
     }
 
     /**
-     * Return the name of the database this layout is in.
+     * Returns the name of the database that this layout is in.
      *
      * @return string Database name.
      */
@@ -68,9 +70,9 @@ class FileMaker_Layout
     }
 
     /**
-     * Return an array with the string names of all fields in this layout.
+     * Returns an array with the names of all fields in this layout.
      *
-     * @return array Simple list of string field names.
+     * @return array List of field names as strings.
      */
     function listFields()
     {
@@ -78,9 +80,12 @@ class FileMaker_Layout
     }
 
     /**
-     * Returns the FileMaker_Field object describing $fieldName.
+     * Returns a FileMaker_Field object that describes the specified field.
      *
-     * @return FileMaker_Field|FileMaker_Error Either a Field object or an error.
+     * @param string $fieldName Name of field.
+     *
+     * @return FileMaker_Field|FileMaker_Error Field object, if successful. 
+     *         Otherwise, an Error object.
      */
     function &getField($fieldName)
     {
@@ -88,11 +93,10 @@ class FileMaker_Layout
     }
 
     /**
-     * Return an associative array with the names of all fields as
-     * keys, and the array values will be the associated
-     * FileMaker_Field objects.
+     * Returns an associative array with the names of all fields as
+     * keys and FileMaker_Field objects as the array values.
      *
-     * @return array Array of FileMaker_Field objects.
+     * @return array Array of {@link FileMaker_Field} objects.
      */
     function &getFields()
     {
@@ -100,10 +104,10 @@ class FileMaker_Layout
     }
 
     /**
-     * Return an array with the string names of all related sets in
+     * Returns an array of related table names for all portals on
      * this layout.
      *
-     * @return array Simple list of string related set names.
+     * @return array List of related table names as strings.
      */
     function listRelatedSets()
     {
@@ -111,9 +115,13 @@ class FileMaker_Layout
     }
 
     /**
-     * Returns the FileMaker_RelatedSet object describing $relatedSet.
+     * Returns a FileMaker_RelatedSet object that describes the specified 
+     * portal.
      *
-     * @return FileMaker_RelatedSet|FileMaker_Error Either a RelatedSet object or an error.
+     * @param string $relatedSet Name of the related table for a portal.
+     *
+     * @return FileMaker_RelatedSet|FileMaker_Error RelatedSet object, if 
+     *         successful. Otherwise, an Error object.
      */
     function &getRelatedSet($relatedSet)
     {
@@ -121,11 +129,10 @@ class FileMaker_Layout
     }
 
     /**
-     * Return an associative array with the names of all related sets
-     * as keys, and the array values will be the associated
-     * FileMaker_RelatedSet objects.
+     * Returns an associative array with the related table names of all 
+     * portals as keys and FileMaker_RelatedSet objects as the array values.
      *
-     * @return array Array of FileMaker_RelatedSet objects.
+     * @return array Array of {@link FileMaker_RelatedSet} objects.
      */
     function &getRelatedSets()
     {
@@ -133,10 +140,10 @@ class FileMaker_Layout
     }
 
     /**
-     * Return the names of any value lists associated with this
+     * Returns the names of any value lists associated with this
      * layout.
      *
-     * @return array Simple list of string value list names.
+     * @return array List of value list names as strings.
      */
     function listValueLists()
     {
@@ -144,39 +151,80 @@ class FileMaker_Layout
     }
 
     /**
-     * Return the list of options in the named value list.
+     * Returns the list of defined values in the specified value list.
      *
-     * @param integer $recid Record from which the value list should be displayed.
+     * @param string $valueList Name of value list.
+     * @param string  $recid Record from which the value list should be 
+     *        displayed.
      *
-     * @return array List of options in $valueList.
+     * @return array List of defined values.
+     * @deprecated Use getValueListTwoFields instead.
+     * @see getValueListTwoFields
      */
     function getValueList($valueList, $recid = null)
     {
         return $this->_impl->getValueList($valueList, $recid);
     }
+    
+    /**
+     * Returns the list of defined values in the specified value list. 
+     * This method supports single, 2nd only, and both fields value lists. 
+     *
+     * @param string $valueList Name of value list.
+     * @param string  $recid Record from which the value list should be 
+     *        displayed.
+     *
+     * @return array of display names and its corresponding 
+     * value from the value list.
+     */
+    function getValueListTwoFields($valueList, $recid = null)
+    {
+        return $this->_impl->getValueListTwoFields($valueList, $recid);
+    }
 
     /**
-     * Return a multi-level associative array. The top-level array has
-     * names of value lists as keys and arrays as values. The second
-     * level arrays are the lists of choices from each value list.
+     * Returns a multi-level associative array of value lists. 
+     * The top-level array has names of value lists as keys and arrays as 
+     * values. The second level arrays are the lists of defined values from 
+     * each value list.
      *
-     * @param integer $recid Record from which the value list should be displayed.
+     * @param string  $recid Record from which the value list should be 
+     *        displayed.
      * 
      * @return array Array of value-list arrays.
+     * @deprecated Use getValueListTwoFields instead.
+     * @see getValueListsTwoFields
      */
     function getValueLists($recid = null)
     {
         return $this->_impl->getValueLists($recid);
     }
+    
+    /**
+     * Returns a multi-level associative array of value lists. 
+     * The top-level array has names of value lists as keys and associative arrays as 
+     * values. The second level associative arrays are lists of display name and its corresponding 
+     * value from the value list.
+     *
+     * @param string  $recid Record from which the value list should be 
+     *        displayed.
+     * 
+     * @return array Array of value-list associative arrays.
+     */
+    function getValueListsTwoFields($recid = null)
+    {
+        return $this->_impl->getValueListsTwoFields($recid);
+    }
 
     /**
-     * Load extended (FMPXMLLAYOUT) layout information.
+     * Loads extended (FMPXMLLAYOUT) layout information.
      *
      * @access private
      *
-     * @param integer $recid Record from which extended info should be loaded. Currently, this is used for grabbing related value lists. 
+     * @param string  $recid Record from which to load extended information. 
      *
-     * @return boolean|FileMaker_Error True or an error.
+     * @return boolean|FileMaker_Error TRUE, if successful. Otherwise, an 
+     *         Error object.
      */
     function loadExtendedInfo($recid = null)
     {

@@ -154,7 +154,7 @@ class FileMaker_Record
     /**
      * Get the record id of this object.
      *
-     * @return integer The record id.
+     * @return string The record id.
      */
     function getRecordId()
     {
