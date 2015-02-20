@@ -4,10 +4,10 @@
  *
  * @package FileMaker
  *
- * Copyright © 2005-2009, FileMaker, Inc. All rights reserved.
- * NOTE: Use of this source code is subject to the terms of the FileMaker
- * Software License which accompanies the code. Your use of this source code
- * signifies your agreement to such license terms and conditions. Except as
+ * Copyright � 2005-2006, FileMaker, Inc.� All rights reserved.
+ * NOTE:� Use of this source code is subject to the terms of the FileMaker
+ * Software License which accompanies the code.� Your use of this source code
+ * signifies your agreement to such license terms and conditions.� Except as
  * expressly granted in the Software License, no other copyright, patent, or
  * other intellectual property license or right is granted, either expressly or
  * by implication, by FileMaker.
@@ -35,7 +35,6 @@ $__FM_ERRORS = array(
     17 => 'Konvertierung von fremdem Zeichensatz in UTF-16 fehlgeschlagen.',
     18 => 'Client muss Kontoinformationen liefern, um fortzufahren.',
     19 => 'Zeichenfolge enthält andere Zeichen als A-Z, a-z, 0-9 (ASCII).',
-    20 => 'Befehl oder Vorgang durch ausgelöstes Script abgebrochen.',
     100 => 'Datei fehlt.',
     101 => 'Datensatz fehlt.',
     102 => 'Feld fehlt.',
@@ -130,7 +129,7 @@ $__FM_ERRORS = array(
     726 => 'In der Importdatei sind mehr Datensätze vorhanden als in der Zieltabelle. Nicht alle Datensätze werden importiert.',
     727 => 'In der Zieltabelle sind mehr Datensätze vorhanden als in der Importdatei. Nicht alle Datensätze werden aktualisiert.',
     729 => 'Fehler beim Import. Datensätze konnten nicht importiert werden.',
-    730 => 'Nicht unterstützte Excel-Version. Konvertieren Sie die Datei in Excel 7.0 (Excel 95), Excel 97, 2000, XP oder 2007 und versuchen Sie es erneut.',
+    730 => 'Nicht unterstützte Excel-Version. (Konvertieren Sie die Datei in Excel 7.0 (Excel 95), Excel 97, 2000 oder XP und versuchen Sie es erneut.)',
     731 => 'Die für den Import ausgewählte Datei enthält keine Daten.',
     732 => 'Diese Datei kann nicht eingefügt werden, weil sie selbst weitere Dateien enthält.',
     733 => 'Eine Tabelle kann nicht in sich selbst importiert werden.',
@@ -208,13 +207,4 @@ $__FM_ERRORS = array(
     1406 => 'Überprüfung von SQL API fehlgeschlagen (ODBC).',
     1407 => 'Anweisung konnte nicht zugeteilt werden (ODBC).',
     1408 => 'Erweiterter Fehler (ODBC)',
-    1450 => 'Aktion erfordert PHP-Berechtigungserweiterung.',
-	1451 => 'Aktion erfordert, dass die aktuelle Datei remote ist.',
-	1501 => 'SMTP-Authentifizierung fehlgeschlagen.',
-	1502 => 'Verbindung durch SMTP-Server abgelehnt.',
-	1503 => 'SSL-Fehler',
-	1504 => 'Der SMTP-Server verlangt eine verschlüsselte Verbindung.',
-	1505 => 'Die angegebene Authentifizierung wird vom SMTP-Server nicht unterstützt.',
-	1506 => 'E-Mail(s) konnte(n) nicht erfolgreich versendet werden.',
-	1507 => 'Anmeldung am SMTP-Server nicht möglich'
 );

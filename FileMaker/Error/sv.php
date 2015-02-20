@@ -4,7 +4,7 @@
  *
  * @package FileMaker
  *
- * Copyright © 2005-2009, FileMaker, Inc.  All rights reserved.
+ * Copyright © 2005-2006, FileMaker, Inc.  All rights reserved.
  * NOTE:  Use of this source code is subject to the terms of the FileMaker
  * Software License which accompanies the code.  Your use of this source code
  * signifies your agreement to such license terms and conditions.  Except as
@@ -35,7 +35,6 @@ $__FM_ERRORS = array(
     17 => 'Försök att konvertera främmande teckenuppsättning till UTF-16 misslyckades',
     18 => 'Klienten måste ange kontoinformation för att fortsätta',
     19 => 'Strängen innehåller andra tecken än A-Z, a-z, 0-9 (ASCII)',
-    20 => 'Kommando eller åtgärd avbröts av utlöst manus',
     100 => 'Fil saknas',
     101 => 'Post saknas',
     102 => 'Fält saknas',
@@ -130,7 +129,7 @@ $__FM_ERRORS = array(
     726 => 'Importfilen innehåller fler poster än måltabellen. Alla poster importerades inte',
     727 => 'Måltabellen innehåller fler poster än importfilen. Alla poster uppdaterades inte',
     729 => 'Fel inträffade vid importen. Posterna kunde inte importeras',
-    730 => 'Excel-versionen stöds inte. Konvertera filen till Excel 7.0 (Excel 95), 97, 2000, XP, eller 2007 och försök igen.',
+    730 => 'Excel-versionen stöds inte. (Konvertera filen till Excel 7.0 (Excel 95), Excel 97, Excel 2000 eller Excel XP och försök igen)',
     731 => 'Filen som du importerar från innehåller inga data',
     732 => 'Den här filen kan inte sättas in eftersom den innehåller andra filer',
     733 => 'En tabell kan inte importeras till sig själv',
@@ -208,13 +207,4 @@ $__FM_ERRORS = array(
     1406 => 'Kontroll av SQL-API misslyckades (ODBC)',
     1407 => 'Det gick inte att tilldela en instruktion (ODBC)',
     1408 => 'Utökat fel (ODBC)',
-    1450 => 'Åtgärden kräver PHP-behörighetstillägg',
-	1451 => 'Åtgärden kräver att aktuell fil är en fjärrfil',
-	1501 => 'SMTP-verifieringen misslyckades',
-	1502 => 'Anslutningen avvisades av SMTP-servern',
-	1503 => 'Fel med SSL',
-	1504 => 'SMTP-servern kräver att anslutningen är krypterad',
-	1505 => 'Angiven verifiering stöds inte av SMTP-servern',
-	1506 => 'E-post kunde inte skickas',
-	1507 => 'Det går inte att logga in på SMTP-servern'
 );

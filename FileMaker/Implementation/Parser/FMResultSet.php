@@ -269,7 +269,7 @@ case 'field':
  $this->V26005321= null;
 break;
 case 'data':
- $this->V43432a31['fields'][$this->V26005321][] = $this->V6468d939;
+ $this->V43432a31['fields'][$this->V26005321][] = trim($this->V6468d939);
 $this->V6468d939= null;
 break;
 }

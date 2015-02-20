@@ -203,7 +203,7 @@ class FileMaker
      * Create a new FileMaker_Command_Edit object.
      *
      * @param string $layout The layout the record is part of.
-     * @param string $recordId The id of the record to edit.
+     * @param integer $recordId The id of the record to edit.
      * @param array $values A hash of fieldname => value pairs. Repetions can be set
      * by making the value for a field a numerically indexed array, with the numeric keys
      * corresponding to the repetition number to set.
@@ -219,7 +219,7 @@ class FileMaker
      * Create a new FileMaker_Command_Delete object.
      *
      * @param string $layout The layout to delete from.
-     * @param string $recordId The id of the record to delete.
+     * @param integer $recordId The id of the record to delete.
      *
      * @return FileMaker_Command_Delete The new delete command.
      */
@@ -232,7 +232,7 @@ class FileMaker
      * Create a new FileMaker_Command_Duplicate object.
      *
      * @param string $layout The layout the record to duplicate is in.
-     * @param string $recordId The id of the record to duplicate.
+     * @param integer $recordId The id of the record to duplicate.
      *
      * @return FileMaker_Command_Duplicate The new duplicate command.
      */
@@ -342,7 +342,7 @@ class FileMaker
      * fails.
      *
      * @param string $layout The layout $recordId is in.
-     * @param string $recordId The record id to fetch.
+     * @param integer $recordId The record id to fetch.
      *
      * @return FileMaker_Record|FileMaker_Error Either a record object or an error.
      */

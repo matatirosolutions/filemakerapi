@@ -8,9 +8,6 @@ require_once dirname(__FILE__) . '/Parser/FMPXMLLAYOUT.php';
  var $_fields = array();
  var $_relatedSets = array();
  var $_valueLists = array();
-
-	 
- var $Vab234ad8 = array();
  var $_database;
  var $_extended = false;
  function FileMaker_Layout_Implementation(&$V0ab34ca9)
@@ -63,18 +60,7 @@ if (FileMaker::isError($Vb4a88417)) {
 }
 return array_keys($this->_valueLists);
 }
- 
- function getValueListTwoFields($V993fcb1e, $Vd33e904c = null){
- 
- $Vb4a88417 = $this->loadExtendedInfo($Vd33e904c);
-if (FileMaker::isError($Vb4a88417)) {
- return $Vb4a88417;
-}
-return isset($this->_valueLists[$V993fcb1e]) ?
- $this->Vab234ad8[$V993fcb1e] : null;
-}
-
-  function getValueList($V993fcb1e, $Vd33e904c = null)
+ function getValueList($V993fcb1e, $Vd33e904c = null)
  {
  $Vb4a88417 = $this->loadExtendedInfo($Vd33e904c);
 if (FileMaker::isError($Vb4a88417)) {
@@ -82,16 +68,6 @@ if (FileMaker::isError($Vb4a88417)) {
 }
 return isset($this->_valueLists[$V993fcb1e]) ?
  $this->_valueLists[$V993fcb1e] : null;
-}
-
-  
- function getValueListsTwoFields($Vd33e904c = null)
- {
- $Vb4a88417 = $this->loadExtendedInfo($Vd33e904c);
-if (FileMaker::isError($Vb4a88417)) {
- return $Vb4a88417;
-}
-return $this->Vab234ad8;
 }
  function getValueLists($Vd33e904c = null)
  {

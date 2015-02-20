@@ -4,10 +4,10 @@
  *
  * @package FileMaker
  *
- * Copyright Â© 2005-2009, FileMaker, Inc. All rights reserved.
- * NOTE: Use of this source code is subject to the terms of the FileMaker
- * Software License which accompanies the code. Your use of this source code
- * signifies your agreement to such license terms and conditions. Except as
+ * Copyright © 2005-2006, FileMaker, Inc.Ê All rights reserved.
+ * NOTE:Ê Use of this source code is subject to the terms of the FileMaker
+ * Software License which accompanies the code.Ê Your use of this source code
+ * signifies your agreement to such license terms and conditions.Ê Except as
  * expressly granted in the Software License, no other copyright, patent, or
  * other intellectual property license or right is granted, either expressly or
  * by implication, by FileMaker.
@@ -35,7 +35,6 @@ $__FM_ERRORS = array(
     17 => 'Attempt to convert foreign character set to UTF-16 failed',
     18 => 'Client must provide account information to proceed',
     19 => 'String contains characters other than A-Z, a-z, 0-9 (ASCII)',
-    20 => 'Command or operation cancelled by triggered script',
     100 => 'File is missing',
     101 => 'Record is missing',
     102 => 'Field is missing',
@@ -130,7 +129,7 @@ $__FM_ERRORS = array(
     726 => 'There are more records in the import file than in the target table. Not all records were imported',
     727 => 'There are more records in the target table than in the import file. Not all records were updated',
     729 => 'Errors occurred during import. Records could not be imported',
-    730 => 'Unsupported Excel version. Convert file to Excel 7.0 (Excel 95), 97, 2000, XP, or 2007 format and try again.',
+    730 => 'Unsupported Excel version. (Convert file to Excel 7.0 (Excel 95), Excel 97, 2000, or XP format and try again)',
     731 => 'The file you are importing from contains no data',
     732 => 'This file cannot be inserted because it contains other files',
     733 => 'A table cannot be imported into itself',
@@ -208,13 +207,4 @@ $__FM_ERRORS = array(
     1406 => 'Failed check for SQL API (ODBC)',
     1407 => 'Failed to allocate statement (ODBC)',
     1408 => 'Extended error (ODBC)',
-    1450 => 'Action requires PHP privilege extension',
-	1451 => 'Action requires that current file be remote',
-	1501 => 'SMTP authentication failed',
-	1502 => 'Connection refused by SMTP server',
-	1503 => 'Error with SSL',
-	1504 => 'SMTP server requires the connection to be encrypted',
-	1505 => 'Specified authentication is not supported by SMTP server',
-	1506 => 'Email message(s) could not be sent successfully',
-	1507 => 'Unable to log in to the SMTP server'
 );

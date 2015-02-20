@@ -5,14 +5,14 @@
   var $V73ee434e = array('charset' => 'utf-8');
  var $Vea4b3413 = null;
 
- var $V9a3dcbce;
+var $V9a3dcbce;
  function getAPIVersion()
  {
- return '1.1';
+ return '1.0';
 }
  function getMinServerVersion()
  {
- return '10.0.0.0';
+ return '9.0.0.0';
 }
  function FileMaker_Implementation($V11e0eed8, $Vccd0e374, $V14c4b06b, $V5f4dcc3b)
  {
@@ -312,10 +312,10 @@ return $Vd1fc8eaf;
  { 
  if (!function_exists('curl_init')) {
  return new FileMaker_Error($this, 'cURL is required to use the FileMaker API.');
-} 
+}
  $Ve0c6dcf8 = array();
 foreach ($Vf7cc8e48 as $V3c6e0b8a => $V3a6d0284) {
- if (strtolower($this->getProperty('charset')) != 'utf-8' && $V3a6d0284 !== true) {
+ if ($this->getProperty('charset') != 'utf-8' && $V3a6d0284 !== true) {
  $V3a6d0284 = utf8_encode($V3a6d0284);
 }
 $Ve0c6dcf8[] = urlencode($V3c6e0b8a) . ($V3a6d0284 === true ? '' : '=' . urlencode($V3a6d0284));
@@ -332,7 +332,7 @@ curl_setopt($Vd88fc6ed, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($Vd88fc6ed, CURLOPT_FAILONERROR, true); 
 	
  if ($this->getProperty('username')) { 
- $V313225f0 = base64_encode(utf8_decode($this->getProperty('username')). ':' . utf8_decode($this->getProperty('password')));
+ $V313225f0 = base64_encode($this->getProperty('username'). ':' . $this->getProperty('password'));
 $V44914468 = 'X-FMI-PE-Authorization: Basic ' . $V313225f0;
 curl_setopt($Vd88fc6ed, CURLOPT_HTTPHEADER, array('X-FMI-PE-ExtendedPrivilege: tU+xR2RSsdk=', $V44914468));
 }else{

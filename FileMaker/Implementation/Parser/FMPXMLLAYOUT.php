@@ -3,17 +3,11 @@
 {
   var $Vd05b6ed7;
  var $Ve3ad9440;
-
-  
- var $V6a45a325;
  var $_fm;
  var $V5431b8d4;
  var $V6de51026 = false;
  var $V191be3bd;
  var $V32e51cce;
-
-  
- var$V582ddd29;
  function FileMaker_Parser_FMPXMLLAYOUT(&$V0ab34ca9)
  {
  $this->_fm =& $V0ab34ca9;
@@ -47,7 +41,6 @@ return true;
  return new FileMaker_Error($this->_fm, 'Attempt to set extended information before parsing data.');
 }
 $Vc6140495->_valueLists = $this->Ve3ad9440;
-$Vc6140495->Vab234ad8= $this->V6a45a325;
 foreach ($this->Vd05b6ed7 as $V972bf3f0 => $V77be71a4) {
  $V8fa14cdd =& $Vc6140495->getField($V972bf3f0);
 $V8fa14cdd->_impl->_styleType = $V77be71a4['styleType'];
@@ -67,15 +60,12 @@ $this->Vd05b6ed7[$this->V191be3bd]['valueList'] = $V5d06e8a3['VALUELIST'];
 break;
 case 'VALUELIST':
  $this->Ve3ad9440[$V5d06e8a3['NAME']] = array();
-$this->V6a45a325[$V5d06e8a3['NAME']] = array();
 $this->V32e51cce= $V5d06e8a3['NAME'];
 break;
 case 'VALUE':
- $this->V582ddd29= $V5d06e8a3['DISPLAY'];
-$this->Ve3ad9440[$this->V32e51cce][] = '';
+ $this->Ve3ad9440[$this->V32e51cce][] = '';
 break;
 }
-$this->inside_data = false;
 }
  function _end($V3643b863, $Vb068931c)
  {
@@ -87,32 +77,11 @@ case 'VALUELIST':
  $this->V32e51cce= null;
 break;
 }
-
- $this->inside_data = false;
 }
  function _cdata($V3643b863, $V8d777f38)
  {
- if ($this->V32e51cce!== null && preg_match('|\S|', $V8d777f38)) {  
- if($this->inside_data){
- $V78656626 = $this->V6a45a325[$this->V32e51cce][$this->V582ddd29];
-$V8d777f38 = $V78656626 . $V8d777f38;
+ if ($this->V32e51cce!== null && preg_match('|\S|', $V8d777f38)) {
+ $this->Ve3ad9440[$this->V32e51cce][count($this->Ve3ad9440[$this->V32e51cce]) - 1] .= $this->_fm->toOutputCharset($V8d777f38);
 }
-$V83ee0926 = array( $this->V582ddd29=> $this->_fm->toOutputCharset($V8d777f38));
-$this->associative_array_push($this->V6a45a325[$this->V32e51cce], $V83ee0926);
-$this->Ve3ad9440[$this->V32e51cce][count($this->Ve3ad9440[$this->V32e51cce]) - 1] .= $this->_fm->toOutputCharset($V8d777f38);
-$this->inside_data = true;
-}
-
- }
-
-	 
-	function associative_array_push(&$Vf1f713c9, $V34ec78fc) {
- if (is_array($V34ec78fc)) {
- foreach ($V34ec78fc as $V3c6e0b8a => $V2063c160) {
- $Vf1f713c9[$V3c6e0b8a] = $V2063c160;
-}
-return $Vf1f713c9;
-}
-return false;
 }
 }

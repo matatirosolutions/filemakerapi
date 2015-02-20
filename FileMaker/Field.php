@@ -4,7 +4,7 @@
  *
  * @package FileMaker
  *
- * Copyright © 2005-2009, FileMaker, Inc.Ê All rights reserved.
+ * Copyright © 2005-2006, FileMaker, Inc.Ê All rights reserved.
  * NOTE:Ê Use of this source code is subject to the terms of the FileMaker
  * Software License which accompanies the code.Ê Your use of this source code
  * signifies your agreement to such license terms and conditions.Ê Except as
@@ -233,7 +233,7 @@ class FileMaker_Field
      * value list, return the list of choices in that value
      * list. Otherwise returns NULL.
      *
-     * @param string  $recid Record from which the value list should be displayed.
+     * @param integer $recid Record from which the value list should be displayed.
      * 
      * @return array The value list array.
      */
