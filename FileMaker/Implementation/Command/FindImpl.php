@@ -34,7 +34,6 @@ $this->_setRelatedSetsFilters($V21ffce5b);
 } 
  foreach ($this->_findCriteria as $Vd1148ee8 => $Ve9de89b0) {
  $V21ffce5b[$Vd1148ee8] = $Ve9de89b0;
-$V21ffce5b[$Vd1148ee8 . '.op'] = 'bw';
 } 
  $V0f635d0e = $this->_fm->_execute($V21ffce5b);
 if (FileMaker::isError($V0f635d0e)) {

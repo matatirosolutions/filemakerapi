@@ -1,26 +1,27 @@
 <?php
 /**
- * FileMaker PHP API.
+ * FileMaker API for PHP
  *
  * @package FileMaker
  *
- * Copyright © 2005-2006, FileMaker, Inc.Ê All rights reserved.
- * NOTE:Ê Use of this source code is subject to the terms of the FileMaker
- * Software License which accompanies the code.Ê Your use of this source code
- * signifies your agreement to such license terms and conditions.Ê Except as
+ * Copyright © 2005-2007, FileMaker, Inc. All rights reserved.
+ * NOTE: Use of this source code is subject to the terms of the FileMaker
+ * Software License which accompanies the code. Your use of this source code
+ * signifies your agreement to such license terms and conditions. Except as
  * expressly granted in the Software License, no other copyright, patent, or
  * other intellectual property license or right is granted, either expressly or
  * by implication, by FileMaker.
  */
 
-/**
- * Include delegate.
+/**#@+
+ * @ignore Include delegate.
  */
 require_once dirname(__FILE__) . '/Implementation/RelatedSetImpl.php';
+/**#@-*/
 
 /**
- * Related set description class. Contains all the information about a
- * specific related set.
+ * Portal description class. Contains all the information about a
+ * specific set of related records defined by a portal on a layout.
  *
  * @package FileMaker
  */
@@ -28,7 +29,7 @@ class FileMaker_RelatedSet
 {
     /**
      * Implementation. This is the object that actually implements the
-     * related set functionality.
+     * portal functionality.
      *
      * @var FileMaker_RelatedSet_Implementation
      * @access private
@@ -36,19 +37,21 @@ class FileMaker_RelatedSet
     var $_impl;
 
     /**
-     * Related set constructor.
+     * Portal constructor.
      *
-     * @param FileMaker_Layout &$layout The FileMaker_Layout object this related set is part of.
+     * @param FileMaker_Layout &$layout FileMaker_Layout object that this 
+     * portal is on.
      */
     function FileMaker_RelatedSet(&$layout)
     {
-        $this->_impl =& new FileMaker_RelatedSet_Implementation($layout);
+        $this->_impl = new FileMaker_RelatedSet_Implementation($layout);
     }
 
     /**
-     * Returns the name of the related set this object describes.
+     * Returns the name of the related table from which this portal displays 
+     * related records.
      *
-     * @return string Related set name.
+     * @return string Name of related table for this portal.
      */
     function getName()
     {
@@ -56,10 +59,9 @@ class FileMaker_RelatedSet
     }
 
     /**
-     * Return an array with the string names of all fields in this
-     * related set.
+     * Returns an array of the names of all fields in this portal.
      *
-     * @return array Simple list of string field names.
+     * @return array List of field names as strings.
      */
     function listFields()
     {
@@ -67,9 +69,12 @@ class FileMaker_RelatedSet
     }
 
     /**
-     * Returns the FileMaker_Field object describing $fieldName.
+     * Returns a FileMaker_Field object that describes the specified field.
      *
-     * @return FileMaker_Field|FileMaker_Error Either a Field object or an error.
+     * @param string $fieldName Name of field.
+     *
+     * @return FileMaker_Field|FileMaker_Error Field object, if successful. 
+     *         Otherwise, an Error object.
      */
     function &getField($fieldName)
     {
@@ -77,11 +82,10 @@ class FileMaker_RelatedSet
     }
 
     /**
-     * Return an associative array with the names of all fields as
-     * keys, and the array values will be the associated
-     * FileMaker_Field objects.
+     * Returns an associative array with the names of all fields as keys and 
+     * FileMaker_Field objects as the array values.
      *
-     * @return array Array of FileMaker_Field objects.
+     * @return array Array of {@link FileMaker_Field} objects.
      */
     function &getFields()
     {
@@ -89,9 +93,12 @@ class FileMaker_RelatedSet
     }
 
     /**
-     * Load extended (FMPXMLLAYOUT) layout information.
+     * Loads extended (FMPXMLLAYOUT) layout information.
      *
-     * @return boolean|FileMaker_Error True or an error.
+     * @access private
+     *
+     * @return boolean|FileMaker_Error TRUE, if successful. Otherwise, an Error 
+     *         object.
      */
     function loadExtendedInfo()
     {

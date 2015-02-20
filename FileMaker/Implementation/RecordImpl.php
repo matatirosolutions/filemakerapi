@@ -123,7 +123,7 @@ return new FileMaker_Error($this->_fm, 'Only time, date, and timestamp fields ca
  function &getRelatedSet($Vaca007a7)
  {
  if (empty($this->_relatedSets[$Vaca007a7])) {
- $Vcb5e100e =& new FileMaker_Error($this->_fm, 'Related set "' . $Vaca007a7 . '" not present.');
+ $Vcb5e100e = new FileMaker_Error($this->_fm, 'Related set "' . $Vaca007a7 . '" not present.');
 return $Vcb5e100e;
 }
 return $this->_relatedSets[$Vaca007a7];
@@ -134,7 +134,7 @@ return $this->_relatedSets[$Vaca007a7];
 if (FileMaker::isError($V3a2d7564)) {
  return $V3a2d7564;
 }
-$Vde17f0f2 =& new FileMaker_Record($V3a2d7564);
+$Vde17f0f2 = new FileMaker_Record($V3a2d7564);
 $Vde17f0f2->_impl->_parent =& $Vd0e45878;
 return $Vde17f0f2;
 }
@@ -285,7 +285,7 @@ return true;
  $Vaca007a7 = $this->getRelatedSet($V97f7e518);
 if(FileMaker::IsError($Vaca007a7)){
  
- $Vcb5e100e =& new FileMaker_Error($this->_fm, 'Related set "' . $Vaca007a7 . '" not present.');
+ $Vcb5e100e = new FileMaker_Error($this->_fm, 'Related set "' . $Vaca007a7 . '" not present.');
 return $Vcb5e100e;
 }else{ 
   foreach ($Vaca007a7 as $V1b7d5726) {
@@ -293,7 +293,7 @@ return $Vcb5e100e;
  return $V1b7d5726;
 }
 }
-$Vcb5e100e =& new FileMaker_Error($this->_fm, 'Record not present.');
+$Vcb5e100e = new FileMaker_Error($this->_fm, 'Record not present.');
 return $Vcb5e100e;	
  
  } 

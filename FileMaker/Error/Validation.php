@@ -1,26 +1,27 @@
 <?php
 /**
- * FileMaker PHP API.
+ * FileMaker API for PHP
  *
  * @package FileMaker
  *
- * Copyright © 2005-2006, FileMaker, Inc.Ê All rights reserved.
- * NOTE:Ê Use of this source code is subject to the terms of the FileMaker
- * Software License which accompanies the code.Ê Your use of this source code
- * signifies your agreement to such license terms and conditions.Ê Except as
+ * Copyright © 2005-2007, FileMaker, Inc. All rights reserved.
+ * NOTE: Use of this source code is subject to the terms of the FileMaker
+ * Software License which accompanies the code. Your use of this source code
+ * signifies your agreement to such license terms and conditions. Except as
  * expressly granted in the Software License, no other copyright, patent, or
  * other intellectual property license or right is granted, either expressly or
  * by implication, by FileMaker.
  */
 
-/**
- * Include parent class.
+/**#@+
+ * @ignore Include parent class.
  */
 require_once dirname(__FILE__) . '/../Error.php';
+/**#@-*/
 
 /**
- * Extension of FileMaker_Error for adding additional information
- * about validation errors.
+ * Extension of the FileMaker_Error class that adds information about 
+ * pre-validation errors.
  *
  * @package FileMaker
  */
@@ -35,11 +36,12 @@ class FileMaker_Error_Validation extends FileMaker_Error
     var $_errors = array();
 
     /**
-     * Add an error.
+     * Adds an error.
      *
-     * @param FileMaker_Field $field The field object that validation failed on.
-     * @param integer $rule The validation rule that failed.
-     * @param string $value The value that failed validation.
+     * @param FileMaker_Field $field Field object that failed pre-validation.
+     * @param integer $rule Pre-validation rule that failed specified as one 
+     *        of the FILEMAKER_RULE_* constants.
+     * @param string $value Value that failed pre-validation.
      */
     function addError($field, $rule, $value)
     {
@@ -47,10 +49,11 @@ class FileMaker_Error_Validation extends FileMaker_Error
     }
 
     /**
-     * Indicates whether or not the error is a detailed validation
-     * error message, or if it is a server message.
+     * Indicates whether the error is a detailed pre-validation error 
+     * or a FileMaker Web Publishing Engine error.
      *
-     * @return boolean True.
+     * @return boolean TRUE, to indicate that this is a pre-validation 
+     *         error object.
      */
     function isValidationError()
     {
@@ -58,7 +61,7 @@ class FileMaker_Error_Validation extends FileMaker_Error
     }
 
     /**
-     * Return the number of validation rules that failed.
+     * Returns the number of pre-validation rules that failed.
      *
      * @return integer Number of failures.
      */
@@ -68,22 +71,25 @@ class FileMaker_Error_Validation extends FileMaker_Error
     }
 
     /**
-     * Returns an array of arrays describing the validation errors
-     * that occurred. Each entry in the outer array represents an
-     * individual validation failure. Each failure is represented by a
-     * three-element array with the following members:
+     * Returns an array of arrays describing the pre-validation errors that 
+     * occurred. 
+     * 
+     * Each entry in the outer array represents a pre-validation failure. 
+     * Each failure is represented by a three-element array with the
+     * following members:
      *
-     * 0 => The field object for the field that had the validation problem.
-     * 1 => The validation rule that failed for that field (a FILEMAKER_RULE_* constant).
-     * 2 => The invalid value.
+     * - 0 => The field object for the field that failed pre-validation.
+     * - 1 => The pre-validation rule that failed specified as a 
+     *        FILEMAKER_RULE_* constant.
+     * - 2 => The value entered for the field that failed pre-validation.
      *
-     * Multiple validation rules can fail on a single field. If the
-     * optional $fieldName parameter is set, then only failures for
-     * that individual field will be returned.
+     * Multiple pre-validation rules can fail on a single field. If you set the 
+     * optional $fieldName parameter, then failures for only the specified 
+     * field are returned.
      *
-     * @param string $fieldName Get errors only for this field name.
+     * @param string $fieldName Name of the field to get errors for. 
      *
-     * @return array Validation error details.
+     * @return array Pre-validation error details.
      */
     function getErrors($fieldName = null)
     {

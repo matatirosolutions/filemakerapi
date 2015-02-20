@@ -1,8 +1,8 @@
 <?php
 /**
- * FileMaker API configuration file.
+ * FileMaker API for PHP configuration file.
  *
- * All settings are put into the $__FM_CONFIG array to maintain a
+ * All settings are in the $__FM_CONFIG array to maintain a
  * clean global namespace.
  */
 
@@ -41,6 +41,6 @@ $__FM_CONFIG['hostspec'] = 'http://127.0.0.1';
 $__FM_CONFIG['recordClass'] = 'FileMaker_Record';
 
 /**
- * Do prevalidation (validate in PHP) on Record data?
+ * Do pre-validation (validate in PHP engine) on Record data?
  */
 $__FM_CONFIG['prevalidate'] = false;

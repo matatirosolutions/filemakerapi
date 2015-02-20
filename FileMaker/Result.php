@@ -1,25 +1,27 @@
 <?php
 /**
- * FileMaker PHP API.
+ * FileMaker API for PHP
  *
  * @package FileMaker
  *
- * Copyright © 2005-2006, FileMaker, Inc.Ê All rights reserved.
- * NOTE:Ê Use of this source code is subject to the terms of the FileMaker
- * Software License which accompanies the code.Ê Your use of this source code
- * signifies your agreement to such license terms and conditions.Ê Except as
+ * Copyright © 2005-2007, FileMaker, Inc. All rights reserved.
+ * NOTE: Use of this source code is subject to the terms of the FileMaker
+ * Software License which accompanies the code. Your use of this source code
+ * signifies your agreement to such license terms and conditions. Except as
  * expressly granted in the Software License, no other copyright, patent, or
  * other intellectual property license or right is granted, either expressly or
  * by implication, by FileMaker.
  */
 
-/**
- * Include delegate.
+/**#@+
+ * @ignore Include delegate.
  */
 require_once dirname(__FILE__) . '/Implementation/ResultImpl.php';
+/**#@-*/
 
 /**
- * Base Result object.
+ * Result set description class. Contains all the information about a set of 
+ * records returned by a command. 
  *
  * @package FileMaker
  */
@@ -34,20 +36,21 @@ class FileMaker_Result
     var $_impl;
 
     /**
-     * Result constructor.
+     * Result object constructor.
      *
-     * @param FileMaker_Implementation &$fm The FileMaker_Implementation object this response came from.
+     * @param FileMaker_Implementation &$fm FileMaker_Implementation object 
+     *        that this result came from.
      */
     function FileMaker_Result(&$fm)
     {
-        $this->_impl =& new FileMaker_Result_Implementation($fm);
+        $this->_impl = new FileMaker_Result_Implementation($fm);
     }
 
     /**
-     * Get the FileMaker_Layout object describing the layout of this
-     * response.
+     * Returns a FileMaker_Layout object that describes the layout of this 
+     * result set.
      *
-     * @return FileMaker_Layout The layout description.
+     * @return FileMaker_Layout Layout object.
      */
     function &getLayout()
     {
@@ -55,13 +58,14 @@ class FileMaker_Result
     }
 
     /**
-     * Returns an array containing each record in the result set. Each
-     * member of the array is a FileMaker_Record object, or an
-     * instance of the class name set in the API for instantiating
-     * Records. The array may be empty if the response contains no
-     * records.
+     * Returns an array containing each record in the result set. 
+     * 
+     * Each member of the array is a FileMaker_Record object, or an
+     * instance of the alternate class you specified to use for records
+     * (see {@link FileMaker_Record}. The array may be empty if 
+     * the result set contains no records.
      *
-     * @return array The record objects.
+     * @return array Record objects.
      */
     function &getRecords()
     {
@@ -69,12 +73,14 @@ class FileMaker_Result
     }
 
     /**
-     * Return a list of the names of all fields in the records that
-     * are part of this response. Just the names are returned; if
-     * additional information is required then Layout object provided
-     * by getLayout() must be consulted.
+     * Returns a list of the names of all fields in the records in 
+     * this result set. 
+     * 
+     * Only the field names are returned. If you need additional 
+     * information, examine the Layout object provided by the 
+     * {@link getLayout()} method.
      *
-     * @return array String field names.
+     * @return array List of field names as strings.
      */
     function getFields()
     {
@@ -82,9 +88,10 @@ class FileMaker_Result
     }
 
     /**
-     * Return the names of all related sets present in this record.
+     * Returns the names of related tables for all portals present in records 
+     * in this result set.
      *
-     * @return array String related set names.
+     * @return array List of related table names as strings.
      */
     function getRelatedSets()
     {
@@ -94,7 +101,7 @@ class FileMaker_Result
     /**
      * Returns the number of records in the table that was accessed.
      *
-     * @return integer Table count.
+     * @return integer Total record count in table.
      */
     function getTableRecordCount()
     {
@@ -104,7 +111,7 @@ class FileMaker_Result
     /**
      * Returns the number of records in the entire found set.
      *
-     * @return integer Found count.
+     * @return integer Found record count.
      */
     function getFoundSetCount()
     {
@@ -112,12 +119,14 @@ class FileMaker_Result
     }
 
     /**
-     * Returns the number of records in the set that was actually
-     * returned. If no range parameters were specified this will be
-     * equal to the result of getFoundSetCount(). It will always be
-     * equal to the value of count($response->getRecords()).
+     * Returns the number of records in the filtered result set.
+     * 
+     * If no range parameters were specified on the Find command, 
+     * then this value is equal to the result of the {@link getFoundSetCount()}
+     * method. It is always equal to the value of 
+     * count($response->{@link getRecords()}).
      *
-     * @return integer Fetch count.
+     * @return integer Filtered record count.
      */
     function getFetchCount()
     {
@@ -127,7 +136,7 @@ class FileMaker_Result
     /**
      * Returns the first record in this result set.
      *
-     * @return FileMaker_Record object The first record in the result set.
+     * @return FileMaker_Record First record.
      */
     function getFirstRecord()
     {
@@ -137,7 +146,7 @@ class FileMaker_Result
     /**
      * Returns the last record in this result set.
      *
-     * @return FileMaker_Record object The last record in the result set.
+     * @return FileMaker_Record Last record.
      */
    	function getLastRecord()
     {

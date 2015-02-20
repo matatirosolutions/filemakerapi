@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * FileMaker error codes - Swedish translations.
  *

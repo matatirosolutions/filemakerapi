@@ -1,26 +1,29 @@
 <?php
 /**
- * FileMaker PHP API.
+ * FileMaker API for PHP
  *
  * @package FileMaker
  *
- * Copyright � 2005-2006, FileMaker, Inc.� All rights reserved.
- * NOTE:� Use of this source code is subject to the terms of the FileMaker
- * Software License which accompanies the code.� Your use of this source code
- * signifies your agreement to such license terms and conditions.� Except as
+ * Copyright © 2005-2007, FileMaker, Inc. All rights reserved.
+ * NOTE: Use of this source code is subject to the terms of the FileMaker
+ * Software License which accompanies the code. Your use of this source code
+ * signifies your agreement to such license terms and conditions. Except as
  * expressly granted in the Software License, no other copyright, patent, or
  * other intellectual property license or right is granted, either expressly or
  * by implication, by FileMaker.
  */
 
-/**
- * Include parent and delegate classesa.
+/**#@+
+ * @ignore Include parent and delegate classes.
  */
 require_once dirname(__FILE__) . '/../Command.php';
 require_once dirname(__FILE__) . '/../Implementation/Command/FindRequestImpl.php';
+/**#@-*/
 
 /**
- * Individual find requests that belong to a compound find.
+ * Find Request class. Contains all the information about a single find request 
+ * for a Compound Find command.
+ * Create this command with {@link FileMaker::newFindRequest()}.
  *
  * @package FileMaker
  */
@@ -38,18 +41,21 @@ class FileMaker_Command_FindRequest
      * Find request constructor.
      *
      * @ignore
-     * @param FileMaker_Implementation $fm The FileMaker_Implementation object the request was created by.
-     * @param string $layout The layout to find records in.
+     * @param FileMaker_Implementation $fm FileMaker_Implementation object the 
+     *        request was created by.
+     * @param string $layout Layout to find records in.
      */
     function FileMaker_Command_FindRequest($fm, $layout)
     {
-        $this->_impl =& new FileMaker_Command_FindRequest_Implementation($fm, $layout);
+        $this->_impl = new FileMaker_Command_FindRequest_Implementation($fm, $layout);
     }
 
     /**
-     * Sets if the find request is an omit request.
+     * Sets whether this request is an omit request.
+     * 
+     * An omit request removes the matching records from the final result set.
      *
-     * @param boolean $value true or false.
+     * @param boolean $value TRUE if this is an omit request. Otherwise, FALSE.
      */
     function setOmit($value)
     {
@@ -57,10 +63,10 @@ class FileMaker_Command_FindRequest
     }
 
     /**
-     * Add a find criterion.
+     * Adds a criterion to this find request.
      *
-     * @param string $fieldname The field being tested.
-     * @param string $testvalue The value to test against.
+     * @param string $fieldname Name of the field being tested.
+     * @param string $testvalue Value of the field to test against.
      */
     function addFindCriterion($fieldname, $testvalue)
     {
@@ -68,7 +74,7 @@ class FileMaker_Command_FindRequest
     }
     
     /**
-     * Clear all existing find criteria.
+     * Clears all existing criteria from this find request.
      */
     function clearFindCriteria()
     {

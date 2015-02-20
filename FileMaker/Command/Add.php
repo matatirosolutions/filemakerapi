@@ -1,26 +1,28 @@
 <?php
 /**
- * FileMaker PHP API.
+ * FileMaker API for PHP
  *
  * @package FileMaker
  *
- * Copyright � 2005-2006, FileMaker, Inc.� All rights reserved.
- * NOTE:� Use of this source code is subject to the terms of the FileMaker
- * Software License which accompanies the code.� Your use of this source code
- * signifies your agreement to such license terms and conditions.� Except as
+ * Copyright © 2005-2007, FileMaker, Inc. All rights reserved.
+ * NOTE: Use of this source code is subject to the terms of the FileMaker
+ * Software License which accompanies the code. Your use of this source code
+ * signifies your agreement to such license terms and conditions. Except as
  * expressly granted in the Software License, no other copyright, patent, or
  * other intellectual property license or right is granted, either expressly or
  * by implication, by FileMaker.
  */
 
-/**
- * Include parent and delegate classesa.
+/**#@+
+ * @ignore Include parent and delegate classes.
  */
 require_once dirname(__FILE__) . '/../Command.php';
 require_once dirname(__FILE__) . '/../Implementation/Command/AddImpl.php';
+/**#@-*/
 
 /**
- * Add a new record.
+ * Command class that adds a new record.
+ * Create this command with {@link FileMaker::newAddCommand()}.
  *
  * @package FileMaker
  */
@@ -38,24 +40,24 @@ class FileMaker_Command_Add extends FileMaker_Command
      * Add command constructor.
      *
      * @ignore
-     * @param FileMaker_Implementation $fm The FileMaker_Implementation object the command was created by.
-     * @param string $layout The layout to add to.
-     * @param array $values A hash of fieldname => value pairs. Repetions can be set
-     * by making the value for a field a numerically indexed array, with the numeric keys
+     * @param FileMaker_Implementation $fm FileMaker_Implementation object the command was created by.
+     * @param string $layout Layout to add a record to.
+     * @param array $values Associative array of field name => value pairs. To set field repetitions,
+     * use a numerically indexed array for the value of a field, with the numeric keys
      * corresponding to the repetition number to set.
      */
     function FileMaker_Command_Add($fm, $layout, $values = array())
     {
-        $this->_impl =& new FileMaker_Command_Add_Implementation($fm, $layout, $values);
+        $this->_impl = new FileMaker_Command_Add_Implementation($fm, $layout, $values);
     }
 
     /**
-     * Set the new value for a field.
+     * Sets the new value for a field.
      *
-     * @param string $field The field to set.
-     * @param string $value The value for the field.
-     * @param integer $repetition The repetition number to set,
-     *                            defaults to the first repetition.
+     * @param string $field Name of field to set.
+     * @param string $value Value to set for this field.
+     * @param integer $repetition Field repetition number to set,
+     *        Defaults to the first repetition.
      */
     function setField($field, $value, $repetition = 0)
     {
@@ -63,18 +65,20 @@ class FileMaker_Command_Add extends FileMaker_Command
     }
 
     /**
-     * Set the new value for a date, time, or timestamp field from a
-     * unix timestamp value. If the field is not a date or time field,
-     * then an error is returned. Otherwise returns true.
+     * Sets the new value for a date, time, or timestamp field from a
+     * UNIX timestamp value. 
      *
-     * If we haven't already loaded layout data for the target of this
-     * command, calling this method will cause it to be loaded so that
+     * If the field is not a date or time field, then this method returns  
+     * an Error object. Otherwise, returns TRUE.
+     *
+     * If layout data for the target of this command has not already 
+     * been loaded, calling this method loads layout data so that
      * the type of the field can be checked.
      *
-     * @param string $field The field to set.
-     * @param string $timestamp The timestamp value.
-     * @param integer $repetition The repetition number to set,
-     *                            defaults to the first repetition.
+     * @param string $field Name of the field to set.
+     * @param string $timestamp Timestamp value.
+     * @param integer $repetition Field repetition number to set. 
+     *        Defaults to the first repetition.
      */
     function setFieldFromTimestamp($field, $timestamp, $repetition = 0)
     {

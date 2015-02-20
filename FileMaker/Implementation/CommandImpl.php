@@ -47,7 +47,7 @@ $Vc6140495 = & $this->_fm->getLayout($this->_layout);
 if (FileMaker :: isError($Vc6140495)) {
  return $Vc6140495;
 } 
- $Vcb5e100e = & new FileMaker_Error_Validation($this->_fm);
+ $Vcb5e100e = new FileMaker_Error_Validation($this->_fm);
 if ($V972bf3f0 === null) {   
  foreach ($Vc6140495->getFields() as $V972bf3f0 => $V06e3d36f) {  
  if (!isset ($this->_fields[$V972bf3f0]) || !count($this->_fields[$V972bf3f0])) {
@@ -80,12 +80,12 @@ foreach ($Vf09cc7ee as $V2063c160) {
  return $Vcb5e100e->numErrors() ? $Vcb5e100e : true;
 }
  function & _getResult($V0f635d0e) {
- $V3643b863 = & new FileMaker_Parser_FMResultSet($this->_fm);
+ $V3643b863 = new FileMaker_Parser_FMResultSet($this->_fm);
 $Vb4a88417 = $V3643b863->parse($V0f635d0e);
 if (FileMaker :: isError($Vb4a88417)) {
  return $Vb4a88417;
 }
-$Vd1fc8eaf = & new FileMaker_Result($this->_fm);
+$Vd1fc8eaf = new FileMaker_Result($this->_fm);
 $Vb4a88417 = $V3643b863->setResult($Vd1fc8eaf, $this->V0b9a204c);
 if (FileMaker :: isError($Vb4a88417)) {
  return $Vb4a88417;

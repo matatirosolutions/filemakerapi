@@ -1,29 +1,30 @@
 <?php
 /**
- * FileMaker PHP API.
+ * FileMaker API for PHP
  *
  * @package FileMaker
  *
- * Copyright © 2005-2006, FileMaker, Inc.Ê All rights reserved.
- * NOTE:Ê Use of this source code is subject to the terms of the FileMaker
- * Software License which accompanies the code.Ê Your use of this source code
- * signifies your agreement to such license terms and conditions.Ê Except as
+ * Copyright © 2005-2007, FileMaker, Inc. All rights reserved.
+ * NOTE: Use of this source code is subject to the terms of the FileMaker
+ * Software License which accompanies the code. Your use of this source code
+ * signifies your agreement to such license terms and conditions. Except as
  * expressly granted in the Software License, no other copyright, patent, or
  * other intellectual property license or right is granted, either expressly or
  * by implication, by FileMaker.
  */
 
-/**
- * Make sure that the PEAR base class is loaded. We fall back to a
+/**#@+
+ * @ignore Makes sure that the PEAR base class is loaded. Falls back to a
  * bundled version if it's not found in the include_path.
  */
 @include_once 'PEAR.php';
 if (!class_exists('PEAR_Error')) {
     include_once 'FileMaker/PEAR.php';
 }
+/**#@-*/
 
 /**
- * Extension of PEAR_Error for use in all FileMaker classes.
+ * Extension of the PEAR_Error class for use in all FileMaker classes.
  *
  * @package FileMaker
  */
@@ -38,9 +39,10 @@ class FileMaker_Error extends PEAR_Error
     var $_fm;
 
     /**
-     * Overloaded constructor.
+     * Overloaded FileMaker_Error constructor.
      *
-     * @param FileMaker_Delegate &$fm The FileMaker_Delegate object this error came from.
+     * @param FileMaker_Delegate &$fm FileMaker_Delegate object this error 
+     *        came from.
      * @param string $message Error message.
      * @param integer $code Error code.
      */
@@ -54,9 +56,10 @@ class FileMaker_Error extends PEAR_Error
     }
 
     /**
-     * Overload getMessage() to return XML error equivalents if no
-     * message is explicitly set and we have an error code.
-     *
+     * Overloads getMessage() to return an equivalent FileMaker Web Publishing 
+     * Engine error if no message is explicitly set and this object has an 
+     * error code.
+     * 
      * @return string Error message.
      */
     function getMessage()
@@ -68,12 +71,14 @@ class FileMaker_Error extends PEAR_Error
     }
 
     /**
-     * Return the string representation of $this->code, in the
-     * language currently set on $this->_fm. You should call
-     * getMessage() in most cases if you are not sure that the error
-     * is an XML error with an error code.
+     * Returns the string representation of $this->code in the language 
+     * currently  set for PHP error messages in FileMaker Server Admin 
+     * Console.
+     * 
+     * You should call getMessage() in most cases, if you are not sure whether
+     * the error is a FileMaker Web Publishing Engine error with an error code.
      *
-     * @return string The error description.
+     * @return string Error description.
      */
     function getErrorString()
     {
@@ -99,10 +104,11 @@ class FileMaker_Error extends PEAR_Error
     }
 
     /**
-     * Indicates whether or not the error is a detailed validation
-     * error message, or if it is a server message.
+     * Indicates whether the error is a detailed pre-validation error  
+     * or a FileMaker Web Publishing Engine error.
      *
-     * @return boolean False.
+     * @return boolean FALSE, to indicate that this is an error from the 
+     *         Web Publishing Engine.
      */
     function isValidationError()
     {

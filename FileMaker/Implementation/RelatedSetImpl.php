@@ -23,7 +23,7 @@ $this->_fm =& $Vc6140495->_impl->_fm;
  if (isset($this->_fields[$V972bf3f0])) {
  return $this->_fields[$V972bf3f0];
 }
-$Vcb5e100e =& new FileMaker_Error($this->_fm, 'Field Not Found');
+$Vcb5e100e = new FileMaker_Error($this->_fm, 'Field Not Found');
 return $Vcb5e100e;
 }
  function &getFields()

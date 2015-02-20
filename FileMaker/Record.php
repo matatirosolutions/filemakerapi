@@ -1,32 +1,40 @@
 <?php
 /**
- * FileMaker PHP API.
+ * FileMaker API for PHP
  *
  * @package FileMaker
  *
- * Copyright � 2005-2006, FileMaker, Inc.� All rights reserved.
- * NOTE:� Use of this source code is subject to the terms of the FileMaker
- * Software License which accompanies the code.� Your use of this source code
- * signifies your agreement to such license terms and conditions.� Except as
+ * Copyright © 2005-2007, FileMaker, Inc. All rights reserved.
+ * NOTE: Use of this source code is subject to the terms of the FileMaker
+ * Software License which accompanies the code. Your use of this source code
+ * signifies your agreement to such license terms and conditions. Except as
  * expressly granted in the Software License, no other copyright, patent, or
  * other intellectual property license or right is granted, either expressly or
  * by implication, by FileMaker.
  */
 
-/**
- * Load delegate.
+/**#@+
+ * @ignore Load delegate.
  */
 require_once dirname(__FILE__) . '/Implementation/RecordImpl.php';
+/**#@-*/
 
 /**
- * This is the default Record class for representing each member of a
- * result set. Records can have references to their parent or child
- * records, can be edited or deleted, etc. You can also specify a
- * different class to use for Records; that class should be a subclass
- * of this base class, or encapsulate its functionality. In PHP5 this
- * class would implement an interface that alternate classes would be
- * required to implement as well.
- *
+ * Default Record class that represents each record of a result set. 
+ * 
+ * From a Record object, you can get field data, edit and delete the record, 
+ * get its parent record, get its related record set, and create related 
+ * records. 
+ * 
+ * Instead of this class, you can specify a different class to use for Record 
+ * objects. To specify the record class to use, open the 
+ * FileMaker/conf/filemaker-api.php configuration file where the API is 
+ * installed. Then set $__FM_CONFIG['recordClass'] to the name of the record 
+ * class to use. The class you specify should be a subclass of the 
+ * FileMaker_Record base class or encapsulate its functionality. In PHP 5, 
+ * this class would implement an interface that alternate classes would be 
+ * required to implement as well. 
+ * 
  * @package FileMaker
  */
 class FileMaker_Record
@@ -40,18 +48,19 @@ class FileMaker_Record
     var $_impl;
 
     /**
-     * Record constructor.
+     * Record object constructor.
      *
-     * @param FileMaker_Layout|FileMaker_RelatedSet Either the layout
-     * or related set object this record is a member of.
+     * @param FileMaker_Layout|FileMaker_RelatedSet Specify either the Layout 
+     *        object associated with this record or the Related Set object 
+     *        that this record is a member of.
      */
     function FileMaker_Record(&$layout)
     {
-        $this->_impl =& new FileMaker_Record_Implementation($layout);
+        $this->_impl = new FileMaker_Record_Implementation($layout);
     }
 
     /**
-     * Return the layout this record is part of.
+     * Returns the layout this record is associated with.
      *
      * @return FileMaker_Layout This record's layout.
      */
@@ -61,13 +70,13 @@ class FileMaker_Record
     }
 
     /**
-     * Return a list of the names of all fields in the record. Just
-     * the names are returned; if additional information is required
-     * then the Layout object provided by the parent
-     * FileMaker_Result object's getLayout() method must be
-     * consulted.
+     * Returns a list of the names of all fields in the record. 
      *
-     * @return array Field names
+     * Only the field names are returned. If you need additional 
+     * information, examine the Layout object provided by the 
+     * parent object's {@link FileMaker_Result::getLayout()} method.  
+     *
+     * @return array List of field names as strings.
      */
     function getFields()
     {
@@ -75,13 +84,17 @@ class FileMaker_Record
     }
 
     /**
-     * Get the HTML-encoded value of $field.
+     * Returns the HTML-encoded value of the specified field.
      *
-     * @param string $field The field name to fetch.
-     * @param integer $repetition The repetition number to get,
-     *                            defaults to the first repetition.
+     * This method converts some special characters in the field value to 
+     * HTML entities. For example, '&', '"', '<', and '>' are converted to 
+     * '&amp;', '&quot;', '&lt;', and '&gt;', respectively.
      *
-     * @return string The field value.
+     * @param string $field Name of field.
+     * @param integer $repetition Field repetition number to get. 
+     *        Defaults to the first repetition.
+     *
+     * @return string Encoded field value.
      */
     function getField($field, $repetition = 0)
     {
@@ -89,13 +102,16 @@ class FileMaker_Record
     }
     
 	/**
-     * Get the unencoded value of $field.
+     * Returns the unencoded value of the specified field.
      *
-     * @param string $field The field name to fetch.
-     * @param integer $repetition The repetition number to get,
-     *                            defaults to the first repetition.
+     * This method does not convert special characters in the field value to 
+     * HTML entities.
      *
-     * @return string The unencoded field value.
+     * @param string $field Name of field.
+     * @param integer $repetition Field repetition number to get. 
+     *        Defaults to the first repetition.
+     *
+     * @return string Unencoded field value.
      */
     function getFieldUnencoded($field, $repetition = 0)
     {
@@ -103,16 +119,22 @@ class FileMaker_Record
     }
 
     /**
-     * Return the value of the specified field (and repetition) as a
-     * unix timestamp. If the field is a date field, the timestamp is
+     * Returns the value of the specified field as a UNIX 
+     * timestamp. 
+     * 
+     * If the field is a date field, the timestamp is
      * for the field date at midnight. It the field is a time field,
      * the timestamp is for that time on January 1, 1970. Timestamp
-     * (date & time) fields map directly to the unix timestamp. If the
-     * specified field is not a date or time field, or if the
-     * timestamp generated would be out of range, then we return a
+     * (date and time) fields map directly to the UNIX timestamp. If the
+     * specified field is not a date or time field, or if the timestamp
+     * generated would be out of range, then this method returns a
      * FileMaker_Error object instead.
+     * 
+     * @param string $field Name of the field.
+     * @param integer $repetition Field repetition number to get. 
+     *        Defaults to the first repetition.
      *
-     * @return integer The timestamp value.
+     * @return integer Timestamp value.
      */
     function getFieldAsTimestamp($field, $repetition = 0)
     {
@@ -120,12 +142,12 @@ class FileMaker_Record
     }
 
     /**
-     * Set the value of $field.
+     * Sets the value of $field.
      *
-     * @param string $field The field to change.
-     * @param string $value The new value.
-     * @param integer $repetition The repetition number to set,
-     *                            defaults to the first repetition.
+     * @param string $field Name of the field.
+     * @param string $value New value of the field.
+     * @param integer $repetition Field repetition number to set. 
+     *        Defaults to the first repetition.
      */
     function setField($field, $value, $repetition = 0)
     {
@@ -133,18 +155,20 @@ class FileMaker_Record
     }
 
     /**
-     * Set the new value for a date, time, or timestamp field from a
-     * unix timestamp value. If the field is not a date or time field,
-     * then an error is returned. Otherwise returns true.
+     * Sets the new value for a date, time, or timestamp field from a
+     * UNIX timestamp value. 
      *
-     * If we haven't already loaded layout data for the target of this
-     * command, calling this method will cause it to be loaded so that
+     * If the field is not a date or time field, then returns an error. 
+     * Otherwise, returns TRUE.
+     *
+     * If layout data for the target of this command has not already 
+     * been loaded, calling this method loads layout data so that
      * the type of the field can be checked.
      *
-     * @param string $field The field to set.
-     * @param string $timestamp The timestamp value.
-     * @param integer $repetition The repetition number to set,
-     *                            defaults to the first repetition.
+     * @param string $field Name of the field to set.
+     * @param string $timestamp Timestamp value.
+     * @param integer $repetition Field repetition number to set. 
+     *        Defaults to the first repetition.
      */
     function setFieldFromTimestamp($field, $timestamp, $repetition = 0)
     {
@@ -152,9 +176,9 @@ class FileMaker_Record
     }
 
     /**
-     * Get the record id of this object.
+     * Returns the record ID of this object.
      *
-     * @return string The record id.
+     * @return string Record ID.
      */
     function getRecordId()
     {
@@ -162,9 +186,13 @@ class FileMaker_Record
     }
 
     /**
-     * Get the modification id of this object.
+     * Returns the modification ID of this record.
+     * 
+     * The modification ID is an incremental counter that specifies the current 
+     * version of a record. See the {@link FileMaker_Command_Edit::setModificationId()} 
+     * method.
      *
-     * @return integer The modification id.
+     * @return integer Modification ID.
      */
     function getModificationId()
     {
@@ -172,11 +200,12 @@ class FileMaker_Record
     }
 
     /**
-     * Get any objects in the related set (portal) $relatedSet.
+     * Returns any Record objects in the specified portal or a FileMaker_Error
+     * object if there are no related records
      *
-     * @param string $relatedSet The name of the related set (portal) to return records for.
+     * @param string $relatedSet Name of the portal to return records from.
      *
-     * @return array An array of FileMaker_Record objects from $relatedSet.
+     * @return array Array of FileMaker_Record objects from $relatedSet|FileMaker_Error object.
      */
     function &getRelatedSet($relatedSet)
     {
@@ -184,11 +213,11 @@ class FileMaker_Record
     }
 
     /**
-     * Create a new record in the related set (portal) named by $relatedSet.
+     * Creates a new record in the specified portal.
      *
-     * @param string $relatedSet The name of the portal to create a new record in.
+     * @param string $relatedSet Name of the portal to create a new record in.
      *
-     * @return FileMaker_Record The blank record.
+     * @return FileMaker_Record A new, blank record.
      */
     function &newRelatedRecord($relatedSet)
     {
@@ -196,9 +225,9 @@ class FileMaker_Record
     }
 
     /**
-     * If this is a child record, return its parent.
+     * Returns the parent record, if this record is a child record in a portal.
      *
-     * @return FileMaker_Record The parent record.
+     * @return FileMaker_Record Parent record.
      */
     function &getParent()
     {
@@ -206,20 +235,26 @@ class FileMaker_Record
     }
 
     /**
-     * Validates either a single field or the whole record against the
-     * validation rules that are enforceable on the PHP side - type
-     * rules, ranges, four-digit dates, etc. Rules such as unique or
-     * existing, or validation by calculation field, cannot be
-     * pre-validated.
+     * Pre-validates either a single field or the entire record.
+     * 
+     * This method uses the pre-validation rules that are enforceable by the 
+     * PHP engine -- for example, type rules, ranges, and four-digit dates. 
+     * Rules such as "unique" or "existing," or validation by calculation 
+     * field, cannot be pre-validated.
      *
-     * If the optional $fieldName argument is passed, only that field
-     * will be validated. Otherwise the record will be validated just
-     * as if commit() were called with prevalidation turned on in the
-     * API properties. validate() returns TRUE if validation passes,
-     * or a FileMaker_Error_Validation object containing details about
-     * what failed to validate.
+     * If you pass the optional $fieldName argument, only that field is 
+     * pre-validated. Otherwise, the record is pre-validated as if commit()
+     * were called with "Enable record data pre-validation" selected in
+     * FileMaker Server Admin Console. If pre-validation passes, validate() 
+     * returns TRUE. If pre-validation fails, then validate() returns a 
+     * FileMaker_Error_Validation object containing details about what failed 
+     * to pre-validate.
      *
-     * @return boolean|FileMaker_Error_Validation Result of field validation on $value.
+     * @param string $fieldName Name of field to pre-validate. If empty, 
+     *        pre-validates the entire record.
+     *
+     * @return boolean|FileMaker_Error_Validation TRUE, if pre-validation 
+     *         passes for $value. Otherwise, an Error Validation object.
      */
     function validate($fieldName = null)
     {
@@ -227,9 +262,10 @@ class FileMaker_Record
     }
 
     /**
-     * Save any changes to this record back to the server.
+     * Saves any changes to this record in the database on the Database Server.
      *
-     * @return boolean True, or a FileMaker_Error on failure.
+     * @return boolean|FileMaker_Error TRUE, if successful. Otherwise, an Error
+     *         object.
      */
     function commit()
     {
@@ -237,9 +273,9 @@ class FileMaker_Record
     }
 
     /**
-     * Delete this record from the server.
+     * Deletes this record from the database on the Database Server.
      *
-     * @return FileMaker_Result The response object.
+     * @return FileMaker_Result Response object.
      */
     function delete()
     {
@@ -252,10 +288,10 @@ class FileMaker_Record
      *
      * @access private
      *
-     * @param string $relatedSetName The name of the related set.
-     * @param string $recordId The record id of the record in the related set.
+     * @param string $relatedSetName Name of the portal.
+     * @param string $recordId Record ID of the record in the portal.
      * 
-     * @return FileMaker_Response The response object..
+     * @return FileMaker_Response Response object.
      */
     function getRelatedRecordById($relatedSetName, $recordId)
     {	

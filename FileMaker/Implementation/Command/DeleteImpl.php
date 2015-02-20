@@ -10,7 +10,7 @@ $this->_recordId = $Va6ec9c02;
  function &execute()
  { 
  if (empty($this->_recordId)) {
- $Vcb5e100e =& new FileMaker_Error($this->_fm, 'Delete commands require a record id.');
+ $Vcb5e100e = new FileMaker_Error($this->_fm, 'Delete commands require a record id.');
 return $Vcb5e100e;
 } 
  $V21ffce5b = $this->_getCommandParams(); 

@@ -43,7 +43,7 @@
  $V1c0c74f6 = true;
 if ($Vcb5e100e === null) {
  $V1c0c74f6 = false;
-$Vcb5e100e =& new FileMaker_Error_Validation($this->_layout->_impl->_fm);
+$Vcb5e100e = new FileMaker_Error_Validation($this->_layout->_impl->_fm);
 }
 foreach ($this->getValidationRules() as $V981c1e7b) {
  switch ($V981c1e7b) {
@@ -103,7 +103,7 @@ case FILEMAKER_RULE_FOURDIGITYEAR :
  switch ($this->_result) {
  case 'timestamp' : 
  if ($this->checkTimeStampFormatFourDigitYear($V2063c160)) { 
- ereg('^([0-9]{1,2})[-,/,\\]([0-9]{1,2})[-,/,\\]([0-9]{4})', $V2063c160, $V9c28d32d);
+ preg_match('#^([0-9]{1,2})[-,/,\\\\]([0-9]{1,2})[-,/,\\\\]([0-9]{4})#', $V2063c160, $V9c28d32d);
 $V7436f942 = $V9c28d32d[1];
 $V628b7db0 = $V9c28d32d[2];
 $V84cdc76c = $V9c28d32d[3];  
@@ -121,7 +121,7 @@ $V84cdc76c = $V9c28d32d[3];
 }
 break;
 default :
- ereg('([0-9]{1,2})[-,/,\\]([0-9]{1,2})[-,/,\\]([0-9]{1,4})', $V2063c160, $V78f0805f);
+ preg_match('#([0-9]{1,2})[-,/,\\\\]([0-9]{1,2})[-,/,\\\\]([0-9]{1,4})#', $V2063c160, $V78f0805f);
 if (count($V78f0805f) != 3) {
  $Vcb5e100e->addError($this, $V981c1e7b, $V2063c160);
 } else {
@@ -196,19 +196,19 @@ return $V6b55d9ec;
 }
 function checkTimeStampFormatFourDigitYear($V2063c160) 
 	{
- return (ereg('^[ ]*([0-9]{1,2})[-,/,\\]([0-9]{1,2})[-,/,\\]([0-9]{4})[ ]*([0-9]{1,2})[:]([0-9]{1,2})([:][0-9]{1,2})?([ ]*((AM|PM)|(am|pm)))?[ ]*$', $V2063c160));
+ return (preg_match('#^[ ]*([0-9]{1,2})[-,/,\\\\]([0-9]{1,2})[-,/,\\\\]([0-9]{4})[ ]*([0-9]{1,2})[:]([0-9]{1,2})([:][0-9]{1,2})?([ ]*((AM|PM)|(am|pm)))?[ ]*$#', $V2063c160));
 }
 function checkTimeStampFormat($V2063c160) 
 	{
- return (ereg('^[ ]*([0-9]{1,2})[-,/,\\]([0-9]{1,2})([-,/,\\]([0-9]{1,4}))?[ ]*([0-9]{1,2})[:]([0-9]{1,2})([:][0-9]{1,2})?([ ]*((AM|PM)|(am|pm)))?[ ]*$', $V2063c160));
+ return (preg_match('#^[ ]*([0-9]{1,2})[-,/,\\\\]([0-9]{1,2})([-,/,\\\\]([0-9]{1,4}))?[ ]*([0-9]{1,2})[:]([0-9]{1,2})([:][0-9]{1,2})?([ ]*((AM|PM)|(am|pm)))?[ ]*$#', $V2063c160));
 }
 function checkDateFormat($V2063c160) 
 	{
- return (ereg('^[ ]*([0-9]{1,2})[-,/,\\]([0-9]{1,2})([-,/,\\]([0-9]{1,4}))?[ ]*$', $V2063c160));
+ return (preg_match('#^[ ]*([0-9]{1,2})[-,/,\\\\]([0-9]{1,2})([-,/,\\\\]([0-9]{1,4}))?[ ]*$#', $V2063c160));
 }
 function checkTimeFormat($V2063c160) 
 	{
- return (ereg('^[ ]*([0-9]{1,2})[:]([0-9]{1,2})([:][0-9]{1,2})?([ ]*((AM|PM)|(am|pm)))?[ ]*$', $V2063c160));
+ return (preg_match('#^[ ]*([0-9]{1,2})[:]([0-9]{1,2})([:][0-9]{1,2})?([ ]*((AM|PM)|(am|pm)))?[ ]*$#', $V2063c160));
 }
 function checkNumericOnly($V2063c160) 
 	{
@@ -216,7 +216,7 @@ function checkNumericOnly($V2063c160)
 }
 function checkDateValidity($V2063c160, $V981c1e7b, $Vcb5e100e) 
 	{
- ereg('([0-9]{1,2})[-,/,\\]([0-9]{1,2})([-,/,\\]([0-9]{1,4}))?', $V2063c160, $V78f0805f);
+ preg_match('#([0-9]{1,2})[-,/,\\\\]([0-9]{1,2})([-,/,\\\\]([0-9]{1,4}))?#', $V2063c160, $V78f0805f);
 if ($V78f0805f[4]) {
  $V6c8f3f79 = strlen($V78f0805f[4]);
 $V84cdc76c = $V78f0805f[4];
@@ -245,7 +245,7 @@ if ($Vcaf85b7b) {
 } else {
  $V52124c01 = 24;
 } 
- ereg('([0-9]{1,2})[:]([0-9]{1,2})[:]?([0-9]{1,2})?', $V2063c160, $V9c28d32d);
+ preg_match('#([0-9]{1,2})[:]([0-9]{1,2})[:]?([0-9]{1,2})?#', $V2063c160, $V9c28d32d);
 $V896c55cc = $V9c28d32d[1];
 $V640fd0cc = $V9c28d32d[2];
 if (count($V9c28d32d) >= 4) {

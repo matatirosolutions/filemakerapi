@@ -20,12 +20,12 @@ $this->_fields[$V06e3d36f] = $V2063c160;
  function & execute() { 
  $V21ffce5b = $this->_getCommandParams(); 
  if (empty ($this->_recordId)) {
- $Vcb5e100e = & new FileMaker_Error($this->_fm, 'Edit commands require a record id.');
+ $Vcb5e100e = new FileMaker_Error($this->_fm, 'Edit commands require a record id.');
 return $Vcb5e100e;
 } 
  if (!count($this->_fields)) {  
  if ($this->V6d6e1fd2== null) {
- $Vcb5e100e = & new FileMaker_Error($this->_fm, 'There are no changes to make.');
+ $Vcb5e100e = new FileMaker_Error($this->_fm, 'There are no changes to make.');
 return $Vcb5e100e;
 }
 }  

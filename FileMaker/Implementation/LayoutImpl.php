@@ -29,12 +29,12 @@ require_once dirname(__FILE__) . '/Parser/FMPXMLLAYOUT.php';
  {
  return array_keys($this->_fields);
 }
- function &getField($V972bf3f0)
+ function getField($V972bf3f0)
  {
  if (isset($this->_fields[$V972bf3f0])) {
  return $this->_fields[$V972bf3f0];
 }
-return $Vcb5e100e =& new FileMaker_Error($this->_fm, 'Field Not Found');
+return $Vcb5e100e = new FileMaker_Error($this->_fm, 'Field Not Found');
 }
  function &getFields()
  {
@@ -49,7 +49,7 @@ return $Vcb5e100e =& new FileMaker_Error($this->_fm, 'Field Not Found');
  if (isset($this->_relatedSets[$Vaca007a7])) {
  return $this->_relatedSets[$Vaca007a7];
 }
-return $Vcb5e100e =& new FileMaker_Error($this->_fm, 'RelatedSet Not Found');
+return $Vcb5e100e = new FileMaker_Error($this->_fm, 'RelatedSet Not Found');
 }
  function &getRelatedSets()
  {
@@ -118,7 +118,7 @@ return $this->_valueLists;
  'FMPXMLLAYOUT');
 
  }
-$V3643b863 =& new FileMaker_Parser_FMPXMLLAYOUT($this->_fm);
+$V3643b863 = new FileMaker_Parser_FMPXMLLAYOUT($this->_fm);
 $Vb4a88417 = $V3643b863->parse($V0f635d0e);
 if (FileMaker::isError($Vb4a88417)) {
  return $Vb4a88417;

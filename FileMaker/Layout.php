@@ -46,7 +46,7 @@ class FileMaker_Layout
      */
     function FileMaker_Layout(&$fm)
     {
-        $this->_impl =& new FileMaker_Layout_Implementation($fm);
+        $this->_impl = new FileMaker_Layout_Implementation($fm);
     }
 
     /**
@@ -87,7 +87,7 @@ class FileMaker_Layout
      * @return FileMaker_Field|FileMaker_Error Field object, if successful. 
      *         Otherwise, an Error object.
      */
-    function &getField($fieldName)
+    function getField($fieldName)
     {
         return $this->_impl->getField($fieldName);
     }
@@ -158,28 +158,46 @@ class FileMaker_Layout
      *        displayed.
      *
      * @return array List of defined values.
+
      * @deprecated Use getValueListTwoFields instead.
+
      * @see getValueListTwoFields
      */
     function getValueList($valueList, $recid = null)
     {
         return $this->_impl->getValueList($valueList, $recid);
     }
+
     
+
     /**
+
      * Returns the list of defined values in the specified value list. 
+
      * This method supports single, 2nd only, and both fields value lists. 
+
      *
+
      * @param string $valueList Name of value list.
+
      * @param string  $recid Record from which the value list should be 
+
      *        displayed.
+
      *
+
      * @return array of display names and its corresponding 
+
      * value from the value list.
+
      */
+
     function getValueListTwoFields($valueList, $recid = null)
+
     {
+
         return $this->_impl->getValueListTwoFields($valueList, $recid);
+
     }
 
     /**
@@ -192,28 +210,46 @@ class FileMaker_Layout
      *        displayed.
      * 
      * @return array Array of value-list arrays.
+
      * @deprecated Use getValueListTwoFields instead.
+
      * @see getValueListsTwoFields
      */
     function getValueLists($recid = null)
     {
         return $this->_impl->getValueLists($recid);
     }
+
     
+
     /**
+
      * Returns a multi-level associative array of value lists. 
+
      * The top-level array has names of value lists as keys and associative arrays as 
+
      * values. The second level associative arrays are lists of display name and its corresponding 
+
      * value from the value list.
+
      *
+
      * @param string  $recid Record from which the value list should be 
+
      *        displayed.
+
      * 
+
      * @return array Array of value-list associative arrays.
+
      */
+
     function getValueListsTwoFields($recid = null)
+
     {
+
         return $this->_impl->getValueListsTwoFields($recid);
+
     }
 
     /**
