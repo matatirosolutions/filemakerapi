@@ -62,14 +62,14 @@ if ($this->_result) {
  $Vb4a88417 =& $this->_result;
 return true;
 } 
- $Vb4a88417->_impl->_layout =& new FileMaker_Layout($this->_fm);
+ $Vb4a88417->_impl->_layout = new FileMaker_Layout($this->_fm);
 $this->setLayout($Vb4a88417->_impl->_layout); 
  $Vb4a88417->_impl->_tableCount = $this->V1ea7e575['total-count'];
 $Vb4a88417->_impl->_foundSetCount = $this->Vaae0d98d['count'];
 $Vb4a88417->_impl->_fetchCount = $this->Vaae0d98d['fetch-size']; 
  $V6e52c40b = array();
 foreach ($this->V6e52c40b as $Vde17f0f2) {
- $V4b43b0ae =& new $V561b2299($Vb4a88417->_impl->_layout);
+ $V4b43b0ae = new $V561b2299($Vb4a88417->_impl->_layout);
 $V4b43b0ae->_impl->_fields = $Vde17f0f2['fields'];
 $V4b43b0ae->_impl->_recordId = $Vde17f0f2['record-id'];
 $V4b43b0ae->_impl->_modificationId = $Vde17f0f2['mod-id'];
@@ -77,16 +77,16 @@ if ($Vde17f0f2['children']) {
  foreach ($Vde17f0f2['children'] as $Vaca007a7 => $V268184c1) {
  $V4b43b0ae->_impl->_relatedSets[$Vaca007a7] = array();
 foreach ($V268184c1 as $V1b7d5726) {
- $V4a8a08f0 =& new $V561b2299($Vb4a88417->_impl->_layout->getRelatedSet($Vaca007a7));
+ $V4a8a08f0 = new $V561b2299($Vb4a88417->_impl->_layout->getRelatedSet($Vaca007a7));
 $V4a8a08f0->_impl->_fields = $V1b7d5726['fields'];
 $V4a8a08f0->_impl->_recordId = $V1b7d5726['record-id'];
 $V4a8a08f0->_impl->_modificationId = $V1b7d5726['mod-id'];
-$V4a8a08f0->_impl->_parent =& $V4b43b0ae;
-$V4b43b0ae->_impl->_relatedSets[$Vaca007a7][] =& $V4a8a08f0;
+$V4a8a08f0->_impl->_parent = $V4b43b0ae;
+$V4b43b0ae->_impl->_relatedSets[$Vaca007a7][] = $V4a8a08f0;
 }
 }
 }
-$V6e52c40b[] =& $V4b43b0ae;
+$V6e52c40b[] = $V4b43b0ae;
 }
 $Vb4a88417->_impl->_records =& $V6e52c40b;
 $this->_result =& $Vb4a88417;
@@ -104,7 +104,7 @@ return true;
 $Vc6140495->_impl->_name = $this->V1ea7e575['layout'];
 $Vc6140495->_impl->_database = $this->V1ea7e575['database'];
 foreach ($this->V9f81f3c0 as $V06e3d36f) {
- $V8fa14cdd =& new FileMaker_Field($Vc6140495);
+ $V8fa14cdd = new FileMaker_Field($Vc6140495);
 $V8fa14cdd->_impl->_name = $V06e3d36f['name'];
 $V8fa14cdd->_impl->_autoEntered = (bool)($V06e3d36f['auto-enter'] == 'yes');
 $V8fa14cdd->_impl->_global = (bool)($V06e3d36f['global'] == 'yes');
@@ -144,13 +144,13 @@ if ($V06e3d36f['time-of-day'] == 'no' && $V06e3d36f['result'] == 'time') {
  $V8fa14cdd->_impl->_validationRules[FILEMAKER_RULE_TIME_FIELD] = true;
 $V8fa14cdd->_impl->_validationMask |= FILEMAKER_RULE_TIME_FIELD;
 }
-$Vc6140495->_impl->_fields[$V8fa14cdd->getName()] =& $V8fa14cdd;
+$Vc6140495->_impl->_fields[$V8fa14cdd->getName()] = $V8fa14cdd;
 }
 foreach ($this->Vae581270 as $Vaca007a7 => $V53256610) {
- $V4b43b0ae =& new FileMaker_RelatedSet($Vc6140495);
+ $V4b43b0ae = new FileMaker_RelatedSet($Vc6140495);
 $V4b43b0ae->_impl->_name = $Vaca007a7;
 foreach ($V53256610 as $V06e3d36f) {
- $V8fa14cdd =& new FileMaker_Field($V4b43b0ae);
+ $V8fa14cdd = new FileMaker_Field($V4b43b0ae);
 $V8fa14cdd->_impl->_name = $V06e3d36f['name'];
 $V8fa14cdd->_impl->_autoEntered = (bool)($V06e3d36f['auto-enter'] == 'yes');
 $V8fa14cdd->_impl->_global = (bool)($V06e3d36f['global'] == 'yes');
@@ -190,9 +190,9 @@ if ($V06e3d36f['time-of-day'] == 'no' && $V06e3d36f['result'] == 'time') {
  $V8fa14cdd->_impl->_validationRules[FILEMAKER_RULE_TIME_FIELD] = true;
 $V8fa14cdd->_impl->_validationMask |= FILEMAKER_RULE_TIME_FIELD;
 }
-$V4b43b0ae->_impl->_fields[$V8fa14cdd->getName()] =& $V8fa14cdd;
+$V4b43b0ae->_impl->_fields[$V8fa14cdd->getName()] = $V8fa14cdd;
 }
-$Vc6140495->_impl->_relatedSets[$V4b43b0ae->getName()] =& $V4b43b0ae;
+$Vc6140495->_impl->_relatedSets[$V4b43b0ae->getName()] = $V4b43b0ae;
 }
 $this->_layout =& $Vc6140495;
 return true;

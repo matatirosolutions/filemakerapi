@@ -104,7 +104,7 @@ return $Vd1fc8eaf;
  if ($this-> $Vb2145aac) {
  $V21ffce5b[$Veca07335] = $this-> $Vb2145aac;
 $Vb2145aac .= 'Params';
-if ($this-> $Vb2145aac) {
+if ($this-> $Vb2145aac !== null) {
  $V21ffce5b[$Veca07335 . '.param'] = $this-> $Vb2145aac;
 }
 }

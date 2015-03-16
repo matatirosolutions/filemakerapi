@@ -10,7 +10,7 @@
  {
  return '1.1';
 }
- function getMinServerVersion()
+ static function getMinServerVersion()
  {
  return '10.0.0.0';
 }
@@ -181,7 +181,7 @@ return $Vde17f0f2;
  {
  $V10573b87 =& $this->newFindCommand($Vc6140495);
 $V10573b87->setRecordId($Va6ec9c02);
-$Vd1fc8eaf =& $V10573b87->execute();
+$Vd1fc8eaf = $V10573b87->execute();
 if (FileMaker::isError($Vd1fc8eaf)) {
  return $Vd1fc8eaf;
 }

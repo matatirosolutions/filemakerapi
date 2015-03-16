@@ -102,7 +102,7 @@ class FileMaker
      * @static
      *
      */
-    function isError($variable)
+    static function isError($variable)
     {
         return is_a($variable, 'FileMaker_Error');
     }
@@ -124,7 +124,7 @@ class FileMaker
      * @return string Minimum FileMaker Server version.
      * @static
      */
-    function getMinServerVersion()
+    static function getMinServerVersion()
     {
         return FileMaker_Implementation::getMinServerVersion();
     }
