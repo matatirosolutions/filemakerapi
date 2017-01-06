@@ -4,7 +4,7 @@
  *
  * @package FileMaker
  *
- * Copyright © 2005-2007, FileMaker, Inc. All rights reserved.
+ * Copyright ï¿½ 2005-2007, FileMaker, Inc. All rights reserved.
  * NOTE: Use of this source code is subject to the terms of the FileMaker
  * Software License which accompanies the code. Your use of this source code
  * signifies your agreement to such license terms and conditions. Except as
@@ -46,7 +46,7 @@ class FileMaker_Error extends PEAR_Error
      * @param string $message Error message.
      * @param integer $code Error code.
      */
-    function FileMaker_Error(&$fm, $message = null, $code = null)
+    function __construct(&$fm, $message = null, $code = null)
     {
         $this->_fm =& $fm;
         parent::PEAR_Error($message, $code);

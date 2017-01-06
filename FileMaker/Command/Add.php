@@ -46,7 +46,7 @@ class FileMaker_Command_Add extends FileMaker_Command
      * use a numerically indexed array for the value of a field, with the numeric keys
      * corresponding to the repetition number to set.
      */
-    function FileMaker_Command_Add($fm, $layout, $values = array())
+    function __construct($fm, $layout, $values = array())
     {
         $this->_impl = new FileMaker_Command_Add_Implementation($fm, $layout, $values);
     }

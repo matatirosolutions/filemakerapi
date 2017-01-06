@@ -13,7 +13,7 @@ require_once dirname(__FILE__) . '/Parser/FMPXMLLAYOUT.php';
  var $Vab234ad8 = array();
  var $_database;
  var $_extended = false;
- function FileMaker_Layout_Implementation(&$V0ab34ca9)
+ function __construct(&$V0ab34ca9)
  {
  $this->_fm =& $V0ab34ca9;
 }

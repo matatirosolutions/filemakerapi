@@ -7,7 +7,7 @@
  var $_tableCount;
  var $_foundSetCount;
  var $_fetchCount;
- function FileMaker_Result_Implementation(&$V0ab34ca9)
+ function __construct(&$V0ab34ca9)
  {
  $this->_fm = &$V0ab34ca9;
 }

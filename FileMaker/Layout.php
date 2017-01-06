@@ -4,7 +4,7 @@
  *
  * @package FileMaker
  *
- * Copyright © 2005-2009, FileMaker, Inc. All rights reserved.
+ * Copyright ï¿½ 2005-2009, FileMaker, Inc. All rights reserved.
  * NOTE: Use of this source code is subject to the terms of the FileMaker
  * Software License which accompanies the code. Your use of this source code
  * signifies your agreement to such license terms and conditions. Except as
@@ -44,7 +44,7 @@ class FileMaker_Layout
      * @param FileMaker_Implementation &$fm FileMaker_Implementation object 
      *        that this layout was created through.
      */
-    function FileMaker_Layout(&$fm)
+    function __construct(&$fm)
     {
         $this->_impl = new FileMaker_Layout_Implementation($fm);
     }

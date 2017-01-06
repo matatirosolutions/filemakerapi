@@ -44,7 +44,7 @@ class FileMaker_Command_Find extends FileMaker_Command
      *        command was created by.
      * @param string $layout Layout to find records in.
      */
-    function FileMaker_Command_Find($fm, $layout)
+    function __construct($fm, $layout)
     {
         $this->_impl = new FileMaker_Command_Find_Implementation($fm, $layout);
     }

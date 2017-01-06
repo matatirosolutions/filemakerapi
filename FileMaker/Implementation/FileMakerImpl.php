@@ -14,7 +14,7 @@
  {
  return '10.0.0.0';
 }
- function FileMaker_Implementation($V11e0eed8, $Vccd0e374, $V14c4b06b, $V5f4dcc3b)
+ function __construct($V11e0eed8, $Vccd0e374, $V14c4b06b, $V5f4dcc3b)
  {
  $V07cc694b = time();
 if ((@include dirname(__FILE__) . '/../conf/filemaker-api.php') && isset($__FM_CONFIG)) {

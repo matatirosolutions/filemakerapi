@@ -45,7 +45,7 @@ class FileMaker_Command_Delete extends FileMaker_Command
      * @param string $layout Layout to delete record from.
      * @param string $recordId ID of the record to delete.
      */
-    function FileMaker_Command_Delete($fm, $layout, $recordId)
+    function __construct($fm, $layout, $recordId)
     {
         $this->_impl = new FileMaker_Command_Delete_Implementation($fm, $layout, $recordId);
     }

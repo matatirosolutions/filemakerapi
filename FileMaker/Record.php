@@ -54,7 +54,7 @@ class FileMaker_Record
      *        object associated with this record or the Related Set object 
      *        that this record is a member of.
      */
-    function FileMaker_Record(&$layout)
+    function __construct(&$layout)
     {
         $this->_impl = new FileMaker_Record_Implementation($layout);
     }

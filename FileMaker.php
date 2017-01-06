@@ -147,7 +147,7 @@ class FileMaker
      * @param string $username Account name to log into database.
      * @param string $password Password for account.
      */
-    function FileMaker($database = NULL, $hostspec = NULL, $username = NULL, $password = NULL)
+    function __construct($database = NULL, $hostspec = NULL, $username = NULL, $password = NULL)
     {
         $this->_impl = new FileMaker_Implementation($database, $hostspec, $username, $password);
     }

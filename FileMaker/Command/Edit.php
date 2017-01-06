@@ -49,7 +49,7 @@ class FileMaker_Command_Edit extends FileMaker_Command
      *        the value of a field, with the numeric keys corresponding to the 
      *        repetition number to set.
      */
-    function FileMaker_Command_Edit($fm, $layout, $recordId, $updatedValues = array())
+    function __construct($fm, $layout, $recordId, $updatedValues = array())
     {
         $this->_impl = new FileMaker_Command_Edit_Implementation($fm, $layout, $recordId, $updatedValues);
     }

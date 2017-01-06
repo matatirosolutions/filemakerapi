@@ -46,7 +46,7 @@ class FileMaker_Command_PerformScript extends FileMaker_Command
      * @param string $scriptName Name of the script to run.
      * @param string $scriptParameters Any parameters to pass to the script.
      */
-    function FileMaker_Command_PerformScript($fm, $layout, $scriptName, $scriptParameters = null)
+    function __construct($fm, $layout, $scriptName, $scriptParameters = null)
     {
         $this->_impl = new FileMaker_Command_PerformScript_Implementation($fm, $layout, $scriptName, $scriptParameters);
     }

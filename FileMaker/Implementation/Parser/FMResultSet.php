@@ -22,7 +22,7 @@ require_once dirname(__FILE__) . '/../../Field.php';
  var $V6de51026 = false;
  var $_result;
  var $_layout;
- function FileMaker_Parser_FMResultSet(&$V0ab34ca9)
+ function __construct(&$V0ab34ca9)
  {
  $this->_fm =& $V0ab34ca9;
 }

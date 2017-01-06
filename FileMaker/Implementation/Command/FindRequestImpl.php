@@ -5,7 +5,7 @@
   var $_findCriteria = array();
 
   var $_omit;
- function FileMaker_Command_FindRequest_Implementation()
+ function __construct()
  {
  $this->_omit = false;
 }

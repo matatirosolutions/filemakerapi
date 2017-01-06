@@ -47,7 +47,7 @@ class FileMaker_Command_CompoundFind extends FileMaker_Command
      *        request was created by.
      * @param string $layout Layout to find records in.
      */
-    function FileMaker_Command_CompoundFind($fm, $layout)
+    function __construct($fm, $layout)
     {
         $this->_impl = new FileMaker_Command_CompoundFind_Implementation($fm, $layout);
     }

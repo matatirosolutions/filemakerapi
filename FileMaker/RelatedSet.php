@@ -4,7 +4,7 @@
  *
  * @package FileMaker
  *
- * Copyright © 2005-2007, FileMaker, Inc. All rights reserved.
+ * Copyright ï¿½ 2005-2007, FileMaker, Inc. All rights reserved.
  * NOTE: Use of this source code is subject to the terms of the FileMaker
  * Software License which accompanies the code. Your use of this source code
  * signifies your agreement to such license terms and conditions. Except as
@@ -42,7 +42,7 @@ class FileMaker_RelatedSet
      * @param FileMaker_Layout &$layout FileMaker_Layout object that this 
      * portal is on.
      */
-    function FileMaker_RelatedSet(&$layout)
+    function __construct(&$layout)
     {
         $this->_impl = new FileMaker_RelatedSet_Implementation($layout);
     }

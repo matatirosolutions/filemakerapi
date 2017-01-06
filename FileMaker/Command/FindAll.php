@@ -44,7 +44,7 @@ class FileMaker_Command_FindAll extends FileMaker_Command_Find
      *        command was created by.
      * @param string $layout Layout to find all records in.
      */
-    function FileMaker_Command_FindAll($fm, $layout)
+    function __construct($fm, $layout)
     {
         $this->_impl = new FileMaker_Command_FindAll_Implementation($fm, $layout);
     }

@@ -14,7 +14,7 @@
 
   
  var$V582ddd29;
- function FileMaker_Parser_FMPXMLLAYOUT(&$V0ab34ca9)
+ function __construct(&$V0ab34ca9)
  {
  $this->_fm =& $V0ab34ca9;
 }

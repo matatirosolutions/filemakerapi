@@ -44,7 +44,7 @@ class FileMaker_Command_FindAny extends FileMaker_Command_Find
      *        command was created by.
      * @param string $layout Layout to find a random record from.
      */
-    function FileMaker_Command_FindAny($fm, $layout)
+    function __construct($fm, $layout)
     {
         $this->_impl = new FileMaker_Command_FindAny_Implementation($fm, $layout);
     }

@@ -14,7 +14,7 @@
  var $_valueList = null;
  var $_styleType;
  var $_maxCharacters = 0;
- function FileMaker_Field_Implementation(&$Vc6140495)
+ function __construct(&$Vc6140495)
  {
  $this->_layout =& $Vc6140495;
 }

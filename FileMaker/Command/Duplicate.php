@@ -45,7 +45,7 @@ class FileMaker_Command_Duplicate extends FileMaker_Command
      * @param string $layout Layout the record to duplicate is in.
      * @param string $recordId ID of the record to duplicate.
      */
-    function FileMaker_Command_Duplicate($fm, $layout, $recordId)
+    function __construct($fm, $layout, $recordId)
     {
         $this->_impl = new FileMaker_Command_Duplicate_Implementation($fm, $layout, $recordId);
     }

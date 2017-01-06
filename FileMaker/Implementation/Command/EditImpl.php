@@ -4,8 +4,8 @@
 	 var $_fields = array ();
  var $_modificationId = null;
  var $V6d6e1fd2;
- function FileMaker_Command_Edit_Implementation($V0ab34ca9, $Vc6140495, $Va6ec9c02, $Va0af1e2b = array ()) {
- FileMaker_Command_Implementation::FileMaker_Command_Implementation($V0ab34ca9, $Vc6140495);
+ function __construct($V0ab34ca9, $Vc6140495, $Va6ec9c02, $Va0af1e2b = array ()) {
+ FileMaker_Command_Implementation::__construct($V0ab34ca9, $Vc6140495);
 $this->_recordId = $Va6ec9c02;
 $this->V6d6e1fd2= null;
 foreach ($Va0af1e2b as $V06e3d36f => $V2063c160) {
