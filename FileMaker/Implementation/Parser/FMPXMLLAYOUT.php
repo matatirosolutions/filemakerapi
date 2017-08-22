@@ -49,7 +49,7 @@ return true;
 $Vc6140495->_valueLists = $this->Ve3ad9440;
 $Vc6140495->Vab234ad8= $this->V6a45a325;
 foreach ($this->Vd05b6ed7 as $V972bf3f0 => $V77be71a4) {
- $V8fa14cdd =& $Vc6140495->getField($V972bf3f0);
+ $V8fa14cdd = $Vc6140495->getField($V972bf3f0);
 $V8fa14cdd->_impl->_styleType = $V77be71a4['styleType'];
 $V8fa14cdd->_impl->_valueList = $V77be71a4['valueList'] ? $V77be71a4['valueList'] : null;
 }
@@ -92,7 +92,8 @@ break;
 }
  function _cdata($V3643b863, $V8d777f38)
  {
- if ($this->V32e51cce!== null && preg_match('|\S|', $V8d777f38)) {  
+ if ($this->V32e51cce!== null && preg_match('|\S|', $V8d777f38)) {
+  
  if($this->inside_data){
  $V78656626 = $this->V6a45a325[$this->V32e51cce][$this->V582ddd29];
 $V8d777f38 = $V78656626 . $V8d777f38;
