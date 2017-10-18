@@ -49,7 +49,7 @@ class FileMaker_Error extends PEAR_Error
     function __construct(&$fm, $message = null, $code = null)
     {
         $this->_fm =& $fm;
-        parent::PEAR_Error($message, $code);
+        parent::__construct($message, $code);
 
         // Log the error.
         $fm->log($this->getMessage(), FILEMAKER_LOG_ERR);
