@@ -53,7 +53,7 @@ return $this->_fields[$V06e3d36f][$V6d786dc7];
 if (FileMaker::isError($V2063c160)) {
  return $V2063c160;
 }
-$V06e3d36f =& $this->_layout->getField($V972bf3f0);
+$V06e3d36f = $this->_layout->getField($V972bf3f0);
 if (FileMaker::isError($V06e3d36f)) {
  return $V06e3d36f;
 }
