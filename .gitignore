@@ -32,4 +32,6 @@ local.properties
 
 # OS X
 .DS_Store
+
+# PHPStorm
 .idea/
